@@ -4,9 +4,9 @@ set -euo pipefail
 # Installs the local Reforge Creator 5 Pro / ImageMap profile set into the
 # ImageMap-specific Orca data directory. Override PRINTER_IP when DHCP changes:
 #
-#   PRINTER_IP=192.168.0.113 bash scripts/install_reforge_creator5pro_profiles.sh
+#   PRINTER_IP=100.65.18.84 bash scripts/reforge_creator5pro_profiles.sh
 
-PRINTER_IP="${PRINTER_IP:-192.168.0.113}"
+PRINTER_IP="${PRINTER_IP:-100.65.18.84}"
 MOONRAKER_URL="${MOONRAKER_URL:-http://${PRINTER_IP}:7125}"
 WEBUI_URL="${WEBUI_URL:-http://${PRINTER_IP}:81/}"
 
@@ -184,10 +184,9 @@ conf_tmp="$CONF.tmp"
 jq \
   --arg selected_machine "$SELECTED_MACHINE" \
   --arg selected_process "$SELECTED_PROCESS" \
-  --arg old_dev "192.168.0.112:7125" \
   --arg new_dev "${PRINTER_IP}:7125" '
-    .dev_map = (((.dev_map // {}) | del(.[$old_dev])) + {($new_dev): {"dev_ip": $new_dev, "dev_name": $new_dev}})
-    | .local_machines = (((.local_machines // {}) | del(.[$old_dev])) + {($new_dev): {"dev_ip": $new_dev, "dev_name": $new_dev, "printer_type": "Flashforge Creator 5 Pro"}})
+    .dev_map = (((.dev_map // {}) | del(.["192.168.0.112:7125"], .["192.168.0.113:7125"])) + {($new_dev): {"dev_ip": $new_dev, "dev_name": $new_dev}})
+    | .local_machines = (((.local_machines // {}) | del(.["192.168.0.112:7125"], .["192.168.0.113:7125"])) + {($new_dev): {"dev_ip": $new_dev, "dev_name": $new_dev, "printer_type": "Flashforge Creator 5 Pro"}})
     | .models = (((.models // []) | map(select(.model != "Reforge Creator 5 Pro 0.4 nozzle"))) + [
         {"model":"Reforge Creator 5 Pro 0.4 nozzle","nozzle_diameter":"0.4","vendor":"Flashforge"}
       ])

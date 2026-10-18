@@ -33,7 +33,7 @@ Reforge Creator 5 Pro 0.4 nozzle ImageMap FullColour Safe
 5. If the printer IP changes, update the ImageMap app profile/cache with:
 
 ```bash
-PRINTER_IP=192.168.0.113 bash /home/unknown/Documents/scripts/projectcampaign/OrcaSlicer-ImageMap/scripts/reforge_creator5pro_profiles.sh
+PRINTER_IP=100.65.18.84 bash /home/unknown/Documents/scripts/projectcampaign/OrcaSlicer-ImageMap/scripts/reforge_creator5pro_profiles.sh
 ```
 
 6. Print the ImageMap calibration target, photograph it, and use the calibration tool to tune the filament gamut.
@@ -96,7 +96,7 @@ It then patches:
 Use:
 
 ```bash
-PRINTER_IP=192.168.0.113 bash /home/unknown/Documents/scripts/projectcampaign/OrcaSlicer-ImageMap/scripts/reforge_creator5pro_profiles.sh
+PRINTER_IP=100.65.18.84 bash /home/unknown/Documents/scripts/projectcampaign/OrcaSlicer-ImageMap/scripts/reforge_creator5pro_profiles.sh
 ```
 
 The installer creates timestamped backups under:
