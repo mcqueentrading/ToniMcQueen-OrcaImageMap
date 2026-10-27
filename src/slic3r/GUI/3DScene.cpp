@@ -1235,6 +1235,7 @@ void GLVolume::simple_render(GLShaderProgram* shader,
             filament_state_uses_surface_gradient_preview(base_filament_id, num_physical, texture_mgr);
         const bool base_uses_image_texture_preview = base_uses_texture_preview && !base_uses_surface_gradient_preview;
         const bool base_uses_halftone_texture_preview =
+            !surface_mix_recipe_preview_active(*model_volume, base_filament_id, num_physical, texture_mgr) &&
             texture_preview_halftone_simulation_enabled_for_filament(base_filament_id, num_physical, texture_mgr);
         const bool has_surface_gradient_preview_state =
             base_uses_surface_gradient_preview ||
@@ -1477,6 +1478,7 @@ void GLVolume::render_mmu_texture_preview(const Transform3d &view_matrix,
         filament_state_uses_surface_gradient_preview(base_filament_id, num_physical, texture_mgr);
     const bool base_uses_image_texture_preview = base_uses_texture_preview && !base_uses_surface_gradient_preview;
     const bool base_uses_halftone_texture_preview =
+        !surface_mix_recipe_preview_active(*model_volume, base_filament_id, num_physical, texture_mgr) &&
         texture_preview_halftone_simulation_enabled_for_filament(base_filament_id, num_physical, texture_mgr);
 
     const bool has_mmu_segmentation = !model_volume->mmu_segmentation_facets.empty();

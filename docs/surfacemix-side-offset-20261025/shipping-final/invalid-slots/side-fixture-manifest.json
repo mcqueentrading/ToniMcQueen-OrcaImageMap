@@ -1,0 +1,64 @@
+{
+  "catalogue_records": 1680,
+  "catalogue_sha256": "cbe14a7b0e9e7aac96508dbd2d92de94e6c900192bedebac508d9fb14edae19e",
+  "cells": [
+    {
+      "recipe": {
+        "amplitudes_by_component": [
+          0.8627,
+          0.8471,
+          1.0,
+          0.6667
+        ],
+        "kind": "side_offsets",
+        "max_offset": 255,
+        "offset_order": "slot",
+        "raw_offsets_by_component": [
+          220,
+          216,
+          255,
+          170
+        ]
+      },
+      "sample_id": "patch_421",
+      "source_pointer": "/side_surface/swatches/0",
+      "target_rgb8": [
+        166,
+        71,
+        135
+      ]
+    },
+    {
+      "recipe": {
+        "amplitudes_by_component": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "kind": "side_offsets",
+        "max_offset": 255,
+        "offset_order": "slot",
+        "raw_offsets_by_component": [
+          0,
+          0,
+          0,
+          255
+        ]
+      },
+      "sample_id": "patch_055",
+      "source_pointer": "/side_surface/swatches/474",
+      "target_rgb8": [
+        193,
+        202,
+        233
+      ]
+    }
+  ],
+  "historical_execution_verified": false,
+  "invalid_slot_control": true,
+  "physical_colour_validated": false,
+  "printing_enabled": false,
+  "scope": "EXPERIMENTAL SIDE WALL FIXTURE - DO NOT PRINT",
+  "with_top_stacks": false
+}

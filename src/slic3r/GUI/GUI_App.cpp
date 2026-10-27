@@ -8092,11 +8092,12 @@ void GUI_App::window_pos_center(wxTopLevelWindow *window)
 
 bool GUI_App::config_wizard_startup()
 {
+    // ToniMcQueen-Slicer should open directly into the editor.  The bundled
+    // vendor profiles are loaded independently; setup remains available from
+    // the printer/profile controls when the user explicitly requests it.
     if (!m_app_conf_exists || preset_bundle->printers.only_default_printers()) {
-        BOOST_LOG_TRIVIAL(info) << "run wizard...";
-        run_wizard(ConfigWizard::RR_DATA_EMPTY);
-        BOOST_LOG_TRIVIAL(info) << "finished run wizard";
-        return true;
+        BOOST_LOG_TRIVIAL(info) << "skipping automatic setup wizard";
+        return false;
     } /*else if (get_app_config()->legacy_datadir()) {
         // Looks like user has legacy pre-vendorbundle data directory,
         // explain what this is and run the wizard

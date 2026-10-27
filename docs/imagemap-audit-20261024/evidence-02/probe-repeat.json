@@ -1,0 +1,99 @@
+{
+  "all_strict_contracts_satisfied": false,
+  "colour_assignment_enabled": false,
+  "contract_findings": [
+    {
+      "accepted": true,
+      "decoded_component": 0,
+      "error": "",
+      "input_component": 256,
+      "name": "component_id_range_before_narrowing",
+      "strict_contract_satisfied": false
+    },
+    {
+      "accepted": true,
+      "decoded_component": 0,
+      "error": "",
+      "input_component": -256,
+      "name": "component_id_range_before_narrowing",
+      "strict_contract_satisfied": false
+    },
+    {
+      "decoded_transition_bands": 0,
+      "input_transition_bands": 1,
+      "name": "transition_band_preservation",
+      "strict_contract_satisfied": false
+    }
+  ],
+  "mechanism_checks": [
+    {
+      "name": "side_field_can_average_two_discrete_recipes",
+      "observed": [
+        0.4999999701976776,
+        0.4999999701976776,
+        0.0,
+        0.0
+      ],
+      "passed": true
+    },
+    {
+      "name": "side_component_lookup_does_not_use_sample_normals_in_this_control",
+      "observed": [
+        0.4999999701976776,
+        0.4999999701976776,
+        0.0,
+        0.0
+      ],
+      "passed": true
+    },
+    {
+      "name": "constant_recipe_control",
+      "observed": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "passed": true
+    },
+    {
+      "name": "raw_top_labels_use_discrete_sample_in_this_control",
+      "observed": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "passed": true
+    },
+    {
+      "name": "missing_samples_return_fallback_not_an_error",
+      "observed": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "passed": true
+    },
+    {
+      "name": "existing_contract_preserves_valid_interval_order_and_component_zero",
+      "observed": {
+        "error": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "existing_contract_rejects_incomplete_depth",
+      "observed": {
+        "error": "a: interval depth does not equal calibrated total depth"
+      },
+      "passed": true
+    }
+  ],
+  "mechanism_checks_passed": true,
+  "printing_enabled": false,
+  "product_mesh_loaded": false,
+  "scope": "source-fragment and existing C++ contract probes; synthetic inputs only",
+  "slicing_enabled": false
+}

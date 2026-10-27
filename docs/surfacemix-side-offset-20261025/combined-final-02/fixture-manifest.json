@@ -1,0 +1,118 @@
+{
+  "canonical_to_filament_slot": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "catalogue_sha256": "b6725b0bd5e995ad4415b347c9b5944271e16a44cbc6964925878ccbffed6efa",
+  "cells": [
+    {
+      "layer_heights_mm": [
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08
+      ],
+      "sample_id": "patch_237",
+      "source_pointer": "/surface_calibrations/top_surface/weights/nearest_measured_sample_global/samples/236",
+      "surface_to_deep": [
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "magenta",
+        "white"
+      ],
+      "target_rgb8": [
+        166,
+        71,
+        135
+      ]
+    },
+    {
+      "layer_heights_mm": [
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08
+      ],
+      "sample_id": "patch_534",
+      "source_pointer": "/surface_calibrations/top_surface/weights/nearest_measured_sample_global/samples/533",
+      "surface_to_deep": [
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "cyan",
+        "cyan",
+        "cyan",
+        "cyan",
+        "cyan",
+        "cyan",
+        "cyan",
+        "cyan",
+        "cyan",
+        "cyan"
+      ],
+      "target_rgb8": [
+        193,
+        202,
+        233
+      ]
+    }
+  ],
+  "fixture_height_mm": 3.2,
+  "physical_colour_validated": false,
+  "printing_enabled": false,
+  "product_obj_used": false,
+  "scope": "EXPERIMENTAL FIXTURE ONLY"
+}

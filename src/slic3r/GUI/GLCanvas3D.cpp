@@ -4847,8 +4847,9 @@ void GLCanvas3D::on_set_focus(wxFocusEvent& evt)
 {
     m_tooltip_enabled = false;
     if (m_canvas_type == ECanvasType::CanvasPreview) {
-        // update thumbnails and update plate toolbar
-        wxGetApp().plater()->update_all_plate_thumbnails();
+        // Do not regenerate all OpenGL thumbnails on focus changes. This can
+        // race the Slice view transition and crash Mesa's framebuffer path;
+        // explicit thumbnail updates still use the normal update paths.
         update_plate_thumbnails();
     }
     _refresh_if_shown_on_screen();

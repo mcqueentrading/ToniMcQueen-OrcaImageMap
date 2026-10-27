@@ -1,0 +1,21 @@
+{
+    "bottom_shell_layers": "5",
+    "brim_type": "outer_only",
+    "brim_width": "5",
+    "enable_support": "0",
+    "from": "User",
+    "inherits": "",
+    "initial_layer_print_height": "0.2",
+    "layer_height": "0.2",
+    "name": "0.20mm Reforge First Test @C5P",
+    "print_extruder_id": [
+        "1"
+    ],
+    "print_extruder_variant": [
+        "Direct Drive Standard"
+    ],
+    "print_settings_id": "0.20mm Reforge First Test @C5P",
+    "sparse_infill_pattern": "gyroid",
+    "version": "2.1.1.0",
+    "support_material": "0"
+}

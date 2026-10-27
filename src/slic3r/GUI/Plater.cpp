@@ -1,4 +1,6 @@
 #include "Plater.hpp"
+#include "SurfaceMixRecipePreviewPanel.hpp"
+#include "MMUPaintedTexturePreview.hpp"
 #include "libslic3r/Config.hpp"
 #include "libslic3r_version.h"
 
@@ -1449,6 +1451,7 @@ static wxArrayString texture_mapping_color_mode_choices()
     choices.Add(_L("(5+ toolheads:)"));
     choices.Add(_L("CMYKW"));
     choices.Add(_L("RGBKW"));
+    choices.Add(_L("ToniMcQueen SurfaceMix (experimental)"));
     return choices;
 }
 
@@ -1469,6 +1472,11 @@ static int texture_mapping_color_mode_selection(int filament_color_mode)
     }
 }
 
+static int texture_mapping_color_mode_selection(const TextureMappingZone &zone)
+{
+    return zone.surface_mix_solver_enabled ? 11 : texture_mapping_color_mode_selection(zone.filament_color_mode);
+}
+
 static int texture_mapping_color_mode_from_selection(int selection, int fallback)
 {
     switch (selection) {
@@ -1482,6 +1490,7 @@ static int texture_mapping_color_mode_from_selection(int selection, int fallback
     case 7: return int(TextureMappingZone::FilamentColorBW);
     case 9: return int(TextureMappingZone::FilamentColorCMYKW);
     case 10: return int(TextureMappingZone::FilamentColorRGBKW);
+    case 11: return int(TextureMappingZone::FilamentColorCMYW);
     default: return std::clamp(fallback, int(TextureMappingZone::FilamentColorAny), int(TextureMappingZone::FilamentColorRGBKW));
     }
 }
@@ -2422,6 +2431,8 @@ static wxString texture_mapping_generic_solver_default_label()
 
 static int texture_mapping_generic_solver_mode_choice_selection(int mode)
 {
+    if (mode == -1)
+        return 4; // SurfaceMix owns recipe selection; generic controls are inactive.
     if (mode == int(TextureMappingZone::GenericSolverDefault))
         return 0;
     switch (TextureMappingZone::effective_generic_solver_mode(mode)) {
@@ -2599,7 +2610,8 @@ public:
                                         const TextureMappingPrimeTowerImage &prime_tower_image,
                                         const TextureMappingPrimeTowerImage &prime_tower_image_back,
                                         int initial_options_tab,
-                                        bool initial_strength_offsets_expanded)
+                                        bool initial_strength_offsets_expanded,
+                                        std::function<wxSizer *(wxWindow *)> recipe_preview_controls = {})
         : wxDialog(parent, wxID_ANY, _L("Texture Mapping Options"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
         , m_global_settings(global_settings)
         , m_prime_tower_image(prime_tower_image)
@@ -2623,6 +2635,7 @@ public:
         m_strength_offsets_expanded = initial_strength_offsets_expanded;
         m_top_surface_contoning_shell_usage = top_surface_contoning_shell_usage;
         const int gap = FromDIP(8);
+        const int last_options_tab = recipe_preview_controls ? 7 : 6;
         auto *root = new wxBoxSizer(wxVERTICAL);
         auto *tab_row = new wxBoxSizer(wxHORIZONTAL);
         tab_row->Add(new wxStaticText(this, wxID_ANY, _L("Options")), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, gap);
@@ -2634,8 +2647,10 @@ public:
         tab_choices.Add(_L("Experimental Options"));
         tab_choices.Add(_L("Top-surface coloring (experimental)"));
         tab_choices.Add(_L("Prime Tower Texture Mapping"));
+        if (recipe_preview_controls)
+            tab_choices.Add(_L("SurfaceMix"));
         m_options_tab_choice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, tab_choices);
-        m_options_tab_choice->SetSelection(std::clamp(initial_options_tab, 0, 6));
+        m_options_tab_choice->SetSelection(std::clamp(initial_options_tab, 0, last_options_tab));
         tab_row->Add(m_options_tab_choice, 1, wxALIGN_CENTER_VERTICAL);
         root->Add(tab_row, 0, wxEXPAND | wxALL, gap);
 
@@ -3093,6 +3108,7 @@ public:
         generic_solver_mode_choices.Add(texture_mapping_generic_solver_mode_label(int(TextureMappingZone::GenericSolverRGB)));
         generic_solver_mode_choices.Add(texture_mapping_generic_solver_mode_label(int(TextureMappingZone::GenericSolverOklab)));
         generic_solver_mode_choices.Add(texture_mapping_generic_solver_mode_label(int(TextureMappingZone::GenericSolverOklabSoftCap4Dark4)));
+        generic_solver_mode_choices.Add(_L("ToniMcQueen SurfaceMix"));
         m_generic_solver_mode_choice = new wxChoice(experimental_page, wxID_ANY, wxDefaultPosition, wxDefaultSize, generic_solver_mode_choices);
         m_generic_solver_mode_choice->SetSelection(texture_mapping_generic_solver_mode_choice_selection(generic_solver_mode));
         generic_solver_mode_row->Add(m_generic_solver_mode_choice, 1, wxALIGN_CENTER_VERTICAL);
@@ -3126,6 +3142,10 @@ public:
         m_generic_solver_lookup_choice->SetToolTip(_L("Controls how the fallback Generic Solver picks from precomputed filament color mixes."));
         generic_solver_row->Add(m_generic_solver_lookup_choice, 1, wxALIGN_CENTER_VERTICAL);
         experimental_box->Add(generic_solver_row, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, gap);
+        const bool surface_mix_mode = generic_solver_mode == -1;
+        m_generic_solver_mode_choice->Enable(!surface_mix_mode);
+        m_generic_solver_mix_model_choice->Enable(!surface_mix_mode);
+        m_generic_solver_lookup_choice->Enable(!surface_mix_mode);
         update_dithering_options_visibility(false);
         update_minimum_visibility_offset_visibility(false);
         update_modulation_mode_options_visibility(false);
@@ -3916,16 +3936,25 @@ public:
         m_options_book->AddPage(experimental_page, _L("Experimental Options"));
         m_options_book->AddPage(top_surface_page, _L("Top-surface coloring (experimental)"));
         m_options_book->AddPage(global_page, _L("Prime Tower Texture Mapping"));
+        if (recipe_preview_controls) {
+            auto *surface_mix_page = new wxScrolledWindow(m_options_book, wxID_ANY);
+            surface_mix_page->SetScrollRate(0, FromDIP(10));
+            auto *surface_mix_root = new wxBoxSizer(wxVERTICAL);
+            surface_mix_page->SetSizer(surface_mix_root);
+            if (wxSizer *controls = recipe_preview_controls(surface_mix_page))
+                surface_mix_root->Add(controls, 0, wxEXPAND | wxALL, gap);
+            m_options_book->AddPage(surface_mix_page, _L("SurfaceMix"));
+        }
         update_options_book_min_size();
-        m_options_tab_choice->Bind(wxEVT_CHOICE, [this](wxCommandEvent &evt) {
-            const int selection = std::clamp(evt.GetSelection(), 0, 6);
+        m_options_tab_choice->Bind(wxEVT_CHOICE, [this, last_options_tab](wxCommandEvent &evt) {
+            const int selection = std::clamp(evt.GetSelection(), 0, last_options_tab);
             if (m_options_book)
                 m_options_book->SetSelection(selection);
             if (selection == 5)
                 queue_top_surface_contoning_message_update(true);
         });
         if (m_options_book)
-            m_options_book->SetSelection(std::clamp(initial_options_tab, 0, 6));
+            m_options_book->SetSelection(std::clamp(initial_options_tab, 0, last_options_tab));
         root->Add(m_options_book, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, gap);
         if (wxSizer *buttons = CreateStdDialogButtonSizer(wxOK | wxCANCEL))
             root->Add(buttons, 0, wxEXPAND | wxALL, gap);
@@ -4444,7 +4473,11 @@ public:
 
     const TextureMappingPrimeTowerImage& prime_tower_image() const { return m_prime_tower_image; }
     const TextureMappingPrimeTowerImage& prime_tower_image_back() const { return m_prime_tower_image_back; }
-    int selected_options_tab() const { return std::clamp(m_options_tab_choice ? m_options_tab_choice->GetSelection() : 0, 0, 6); }
+    int selected_options_tab() const
+    {
+        const int last_tab = m_options_tab_choice != nullptr ? int(m_options_tab_choice->GetCount()) - 1 : 0;
+        return std::clamp(m_options_tab_choice ? m_options_tab_choice->GetSelection() : 0, 0, std::max(0, last_tab));
+    }
     bool strength_offsets_expanded() const { return m_strength_offsets_expanded; }
 
     std::vector<float> component_strengths_pct() const
@@ -4740,10 +4773,16 @@ private:
             tmp.top_surface_color_calibration_json = m_top_surface_color_calibration_json;
             tmp.top_surface_contoning_color_prediction_mode = top_surface_contoning_color_prediction_mode();
             tmp.filament_color_mode = m_filament_color_mode;
-            const wxString warning = from_u8(texture_mapping_top_surface_color_calibration_warning(
-                tmp,
-                top_surface_color_calibration_component_colors(),
-                component_transmission_distances_mm()));
+            const auto root = nlohmann::json::parse(m_top_surface_color_calibration_json, nullptr, false);
+            const bool has_surface_mix_transport =
+                root.is_object() && root.contains("surfacemix_top_stacks") &&
+                root.at("surfacemix_top_stacks").value("enabled", false);
+            const wxString warning = has_surface_mix_transport ?
+                _L("SurfaceMix calibration loaded. Configured prefix: up to 3 layers (0.24 mm); local 1- or 2-layer prefixes are used where depth is limited. Mapping: F1=Cyan, F2=Magenta, F3=Yellow, F4=White.") :
+                from_u8(texture_mapping_top_surface_color_calibration_warning(
+                    tmp,
+                    top_surface_color_calibration_component_colors(),
+                    component_transmission_distances_mm()));
             m_top_surface_color_calibration_warning_text->SetLabel(warning);
             m_top_surface_color_calibration_warning_text->Show(!warning.empty());
             m_top_surface_color_calibration_warning_text->Wrap(FromDIP(390));
@@ -10066,7 +10105,12 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
             const bool affects_scene = texture_mapping_zone_affects_scene(before_zone_id) ||
                                        texture_mapping_zone_affects_scene(after_zone_id);
             refresh_summary_preview(rows[zone_index]);
-            set_config_string("texture_mapping_definitions", serialize_texture_mapping_manager(mgr_ptr));
+            const std::string serialized = serialize_texture_mapping_manager(mgr_ptr);
+            set_config_string("texture_mapping_definitions", serialized);
+            // The slice pipeline can rebuild the zone manager from the model.
+            // Keep the SurfaceMix solver flag in that authoritative snapshot;
+            // otherwise slicing reloads the same zone as plain CMYW.
+            sync_current_model_texture_mapping_definitions(serialized);
             if (preview_only_change) {
                 notify_change(false);
                 if (affects_scene || linear_gradient_preview_change)
@@ -10293,7 +10337,7 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
         mode_row->Add(new wxStaticText(editor, wxID_ANY, _L("Filament colors")), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, gap);
         auto *mode_choice = make_sidebar_combo(editor,
                                                texture_mapping_color_mode_choices(),
-                                               texture_mapping_color_mode_selection(entry.filament_color_mode),
+                                               texture_mapping_color_mode_selection(entry),
                                                wxSize(FromDIP(220), -1));
         mode_row->Add(mode_choice, 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, gap);
         editor_sizer->Add(mode_row, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, gap);
@@ -10310,6 +10354,19 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
         auto update_color_calibration_warning_text = [this, color_calibration_warning_text, num_physical, physical_colors](const TextureMappingZone &zone) {
             if (color_calibration_warning_text == nullptr)
                 return;
+            const auto top_calibration_root =
+                nlohmann::json::parse(zone.top_surface_color_calibration_json, nullptr, false);
+            const bool has_surface_mix_transport =
+                top_calibration_root.is_object() &&
+                top_calibration_root.contains("surfacemix_top_stacks") &&
+                top_calibration_root.at("surfacemix_top_stacks").value("enabled", false);
+            if (zone.surface_mix_solver_enabled || has_surface_mix_transport) {
+                color_calibration_warning_text->SetLabel(
+                    _L("ToniMcQueen SurfaceMix is selected: calibrated 1-3 layer top-surface prefixes are enabled, using 3 where local depth permits. Explicit mapping: F1=Cyan, F2=Magenta, F3=Yellow, F4=White. The measured side-offset plan is inspection-only; inward geometry and dithering remain disabled."));
+                color_calibration_warning_text->Show(true);
+                color_calibration_warning_text->Wrap(FromDIP(300));
+                return;
+            }
             const std::vector<unsigned int> warning_ids = zone.is_image_texture() ?
                 TextureMappingManager::effective_texture_component_ids(zone, num_physical, physical_colors) :
                 texture_mapping_selected_ids(zone, num_physical);
@@ -10378,6 +10435,11 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
                 else
                     updated.linear_gradient_radius_mm = radius_value;
             }
+            const bool surface_mix_solver = mode_choice != nullptr && mode_choice->GetSelection() == 11;
+            updated.surface_mix_solver_enabled = surface_mix_solver;
+            // Keep the explicit SurfaceMix selection when Advanced Options commits.
+            // Without this flag the next slice refresh serializes the zone as plain CMYW.
+            updated.surface_mix_solver_enabled = mode_choice != nullptr && mode_choice->GetSelection() == 11;
             updated.filament_color_mode = mode_choice != nullptr ?
                 texture_mapping_color_mode_from_selection(mode_choice->GetSelection(), updated.filament_color_mode) :
                 updated.filament_color_mode;
@@ -10546,6 +10608,10 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
             updated.filament_color_mode = mode_choice != nullptr ?
                 texture_mapping_color_mode_from_selection(mode_choice->GetSelection(), updated.filament_color_mode) :
                 updated.filament_color_mode;
+            // SurfaceMix is represented internally as CMYW for channel labels,
+            // so preserve the separate solver flag when the user selects it
+            // directly from the Filament colors dropdown.
+            updated.surface_mix_solver_enabled = mode_choice != nullptr && mode_choice->GetSelection() == 11;
             updated.high_resolution_sampling = true;
 
             if (updated.is_image_texture() && updated.auto_adjust_filament_selection) {
@@ -10963,6 +11029,24 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
                         obj_list()->update_filament_colors();
                     return true;
                 };
+            const auto recipe_preview_before = surface_mix_recipe_preview_snapshot();
+            const auto surface_mix_top_draft = std::make_shared<SurfaceMixTopStackDraft>();
+            std::function<wxSizer *(wxWindow *)> surface_mix_controls;
+            if (updated.is_image_texture()) {
+                surface_mix_controls = [this, zone_index, mgr_ptr, refresh_texture_mapping_preview, surface_mix_top_draft](wxWindow *page) -> wxSizer * {
+                    if (zone_index >= mgr_ptr->zones().size())
+                        return nullptr;
+                    return create_surface_mix_recipe_preview_controls(page,
+                        [this]() -> const Model * { return p->plater != nullptr ? &p->plater->model() : nullptr; },
+                        [zone_index, mgr_ptr]() -> const TextureMappingZone * {
+                            return zone_index < mgr_ptr->zones().size() ? &mgr_ptr->zones()[zone_index] : nullptr;
+                        }, refresh_texture_mapping_preview, surface_mix_top_draft);
+                };
+            }
+            // Keep the private sidebar state independent of the modal dialog's event stack.
+            // SurfaceMix adds a nested scrolled page and callbacks; do not re-read it through
+            // the event lambda's captured Sidebar after the dialog has closed.
+            auto *sidebar_state = p.get();
             TextureMappingAdvancedOptionsDialog dlg(this,
                                                     updated.texture_mapping_mode,
                                                     updated.filament_color_mode,
@@ -10995,7 +11079,7 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
                                                     updated.minimum_visibility_offset_enabled,
                                                     updated.minimum_visibility_offset_pct,
                                                     updated.generic_solver_lookup_mode,
-                                                    updated.generic_solver_mode,
+                                                    updated.surface_mix_solver_enabled ? -1 : updated.generic_solver_mode,
                                                     updated.generic_solver_mix_model,
                                                     updated.dithering_enabled,
                                                     updated.dithering_method,
@@ -11047,10 +11131,13 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
                                                     wxGetApp().model().texture_mapping_prime_tower_image,
                                                     wxGetApp().model().texture_mapping_prime_tower_image_back,
                                                     p->m_texture_mapping_advanced_options_tab,
-                                                    p->m_texture_mapping_filament_strength_offsets_expanded);
+                                                    p->m_texture_mapping_filament_strength_offsets_expanded,
+                                                    std::move(surface_mix_controls));
             const int result = dlg.ShowModal();
-            p->m_texture_mapping_advanced_options_tab = dlg.selected_options_tab();
-            p->m_texture_mapping_filament_strength_offsets_expanded = dlg.strength_offsets_expanded();
+            if (sidebar_state != nullptr) {
+                sidebar_state->m_texture_mapping_advanced_options_tab = dlg.selected_options_tab();
+                sidebar_state->m_texture_mapping_filament_strength_offsets_expanded = dlg.strength_offsets_expanded();
+            }
             auto queue_filament_color_refresh = [this, notify_change, refresh_texture_mapping_preview]() {
                 CallAfter([notify_change, refresh_texture_mapping_preview]() {
                     notify_change(true);
@@ -11058,10 +11145,16 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
                 });
             };
             if (result != wxID_OK) {
+                if (surface_mix_recipe_preview_snapshot().revision != recipe_preview_before.revision) {
+                    restore_surface_mix_recipe_preview_snapshot(recipe_preview_before);
+                    refresh_texture_mapping_preview();
+                }
                 if (filament_colors_changed_from_calibration)
                     queue_filament_color_refresh();
                 return;
             }
+            const bool surface_mix_preview_changed =
+                surface_mix_recipe_preview_snapshot().revision != recipe_preview_before.revision;
             updated.texture_mapping_mode = dlg.texture_mapping_mode();
             updated.tone_gamma = dlg.tone_gamma();
             updated.filament_overhang_contrast_pct = dlg.filament_overhang_contrast_pct();
@@ -11163,6 +11256,14 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
                 dlg.side_surface_color_calibration_name();
             updated.side_surface_color_calibration_json =
                 dlg.side_surface_color_calibration_json();
+            std::string surface_mix_error;
+            if (!apply_surface_mix_top_stack_draft(updated, *surface_mix_top_draft, ids, &surface_mix_error) ||
+                !apply_surface_mix_side_offset_draft(updated, surface_mix_top_draft->side, ids, &surface_mix_error)) {
+                wxMessageBox(wxString::FromUTF8(surface_mix_error.c_str()), "SurfaceMix settings not applied", wxOK | wxICON_ERROR, this);
+                restore_surface_mix_recipe_preview_snapshot(recipe_preview_before);
+                refresh_texture_mapping_preview();
+                return;
+            }
             if (updated.dithering_enabled)
                 updated.compact_offset_mode = true;
             updated.minimum_visibility_offset_enabled = dlg.minimum_visibility_offset_enabled();
@@ -11170,6 +11271,7 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
             updated.generic_solver_lookup_mode = dlg.generic_solver_lookup_mode();
             updated.generic_solver_mode = dlg.generic_solver_mode();
             updated.generic_solver_mix_model = dlg.generic_solver_mix_model();
+            const bool surface_mix_state_changed = surface_mix_top_draft->changed || surface_mix_top_draft->side.changed;
             const TextureMappingGlobalSettings dlg_global_settings = dlg.global_settings();
             auto prime_tower_only_settings = [](TextureMappingGlobalSettings settings) {
                 settings.preview_opacity_pct = TextureMappingZone::DefaultPreviewOpacityPct;
@@ -11178,9 +11280,11 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
                 settings.preview_simulate_top_surface_lod = TextureMappingZone::DefaultPreviewSimulateTopSurfaceLod;
                 return settings.serialize();
             };
-            const bool global_settings_changed =
+            // SurfaceMix and prime-tower settings must not share a serialization transaction.
+            // The latter can contain stale GUI state while the SurfaceMix dialog is committing.
+            const bool global_settings_changed = !surface_mix_state_changed &&
                 dlg_global_settings.serialize() != bundle->texture_mapping_global_settings.serialize();
-            const bool prime_tower_settings_changed =
+            const bool prime_tower_settings_changed = !surface_mix_state_changed &&
                 prime_tower_only_settings(dlg_global_settings) !=
                 prime_tower_only_settings(bundle->texture_mapping_global_settings);
             if (global_settings_changed)
@@ -11228,6 +11332,8 @@ void Sidebar::update_texture_mapping_panel(bool sync_manager)
                 refresh_texture_mapping_preview();
             if (filament_colors_changed_from_calibration)
                 queue_filament_color_refresh();
+            if (surface_mix_preview_changed)
+                refresh_texture_mapping_preview();
             CallAfter([this]() { update_texture_mapping_panel(false); });
         };
         advanced_btn->Bind(wxEVT_BUTTON, [open_advanced_options](wxCommandEvent &) {

@@ -1,0 +1,7 @@
+{
+	"error_string": "Failed slicing the model. Please verify the slicing of all plates on Orca Slicer before uploading.",
+	"export_time": 140736498997152,
+	"plate_index": 1,
+	"prepare_time": 1,
+	"return_code": -100
+}

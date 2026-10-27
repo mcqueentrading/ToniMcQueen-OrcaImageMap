@@ -1,0 +1,4141 @@
+{
+  "anchored_layer_timings": [
+    {
+      "candidate_surface_count": 2,
+      "exported_surface_count": 2,
+      "model_object_id": 5,
+      "print_object_id": 34,
+      "region_id": 0,
+      "source_component_count": 2,
+      "source_layer_id": 39,
+      "source_surface": "top",
+      "source_z_mm": 3.2000000000000015,
+      "steps": [
+        {
+          "duration_ms": 457.616714,
+          "item_count": 1,
+          "name": "source_context"
+        },
+        {
+          "duration_ms": 0.00522,
+          "item_count": 2,
+          "name": "source_components"
+        },
+        {
+          "duration_ms": 0.749474,
+          "item_count": 38,
+          "name": "project_shell_depths"
+        },
+        {
+          "duration_ms": 191.915919,
+          "item_count": 2,
+          "name": "solve_surface_regions"
+        },
+        {
+          "duration_ms": 193.812371,
+          "item_count": 2,
+          "name": "write_debug_exports"
+        }
+      ],
+      "total_ms": 849.556819,
+      "zone_id": 99
+    }
+  ],
+  "anchored_surfaces": [
+    {
+      "depths": [
+        {
+          "depth": 0,
+          "layer_id": 39,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_00.svg",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "depth": 1,
+          "layer_id": 38,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_01.svg",
+          "z_mm": 3.1200000000000014
+        },
+        {
+          "depth": 2,
+          "layer_id": 37,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_02.svg",
+          "z_mm": 3.0400000000000014
+        },
+        {
+          "depth": 3,
+          "layer_id": 36,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_03.svg",
+          "z_mm": 2.9600000000000013
+        },
+        {
+          "depth": 4,
+          "layer_id": 35,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_04.svg",
+          "z_mm": 2.8800000000000012
+        },
+        {
+          "depth": 5,
+          "layer_id": 34,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_05.svg",
+          "z_mm": 2.800000000000001
+        },
+        {
+          "depth": 6,
+          "layer_id": 33,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_06.svg",
+          "z_mm": 2.720000000000001
+        },
+        {
+          "depth": 7,
+          "layer_id": 32,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_07.svg",
+          "z_mm": 2.640000000000001
+        },
+        {
+          "depth": 8,
+          "layer_id": 31,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_08.svg",
+          "z_mm": 2.560000000000001
+        },
+        {
+          "depth": 9,
+          "layer_id": 30,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_09.svg",
+          "z_mm": 2.480000000000001
+        },
+        {
+          "depth": 10,
+          "layer_id": 29,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_10.svg",
+          "z_mm": 2.400000000000001
+        },
+        {
+          "depth": 11,
+          "layer_id": 28,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_11.svg",
+          "z_mm": 2.3200000000000007
+        },
+        {
+          "depth": 12,
+          "layer_id": 27,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_12.svg",
+          "z_mm": 2.2400000000000007
+        },
+        {
+          "depth": 13,
+          "layer_id": 26,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_13.svg",
+          "z_mm": 2.1600000000000006
+        },
+        {
+          "depth": 14,
+          "layer_id": 25,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_14.svg",
+          "z_mm": 2.0800000000000005
+        },
+        {
+          "depth": 15,
+          "layer_id": 24,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_15.svg",
+          "z_mm": 2.0000000000000004
+        },
+        {
+          "depth": 16,
+          "layer_id": 23,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_16.svg",
+          "z_mm": 1.9200000000000006
+        },
+        {
+          "depth": 17,
+          "layer_id": 22,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_17.svg",
+          "z_mm": 1.8400000000000005
+        },
+        {
+          "depth": 18,
+          "layer_id": 21,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_18.svg",
+          "z_mm": 1.7600000000000005
+        }
+      ],
+      "files": [
+        {
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_sampled_grid.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "sampled_grid_png",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_resolved_stack_grid.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "resolved_stack_grid_png",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_merged_texture_rgb_patches.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "merged_texture_rgb_patches_png",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "depth": 0,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_00.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "depth": 1,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_01.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 3.1200000000000014
+        },
+        {
+          "depth": 2,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_02.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 3.0400000000000014
+        },
+        {
+          "depth": 3,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_03.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.9600000000000013
+        },
+        {
+          "depth": 4,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_04.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.8800000000000012
+        },
+        {
+          "depth": 5,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_05.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.800000000000001
+        },
+        {
+          "depth": 6,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_06.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.720000000000001
+        },
+        {
+          "depth": 7,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_07.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.640000000000001
+        },
+        {
+          "depth": 8,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_08.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.560000000000001
+        },
+        {
+          "depth": 9,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_09.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.480000000000001
+        },
+        {
+          "depth": 10,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_10.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.400000000000001
+        },
+        {
+          "depth": 11,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_11.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.3200000000000007
+        },
+        {
+          "depth": 12,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_12.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.2400000000000007
+        },
+        {
+          "depth": 13,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_13.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 2,
+                "rgb": "#e31a1c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.1600000000000006
+        },
+        {
+          "depth": 14,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_14.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.0800000000000005
+        },
+        {
+          "depth": 15,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_15.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.0000000000000004
+        },
+        {
+          "depth": 16,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_16.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 1.9200000000000006
+        },
+        {
+          "depth": 17,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_17.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 1.8400000000000005
+        },
+        {
+          "depth": 18,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_filament_depth_18.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 4,
+                "rgb": "#6a3d9a"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": -1.9375,
+            "max_y_mm": 3.0625,
+            "min_x_mm": -12.0,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": -12.0,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15617,
+            "width_px": 161
+          },
+          "role": "filament_slice_png",
+          "z_mm": 1.7600000000000005
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 5.616667,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 14.291917999999999,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_overview.svg",
+          "role": "overview_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_sampled_texture.svg",
+          "role": "sampled_texture_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_stack_regions.svg",
+          "role": "stack_regions_svg"
+        },
+        {
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_regions.csv",
+          "role": "regions_csv"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 0,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_00.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 1,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_01.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 2,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_02.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 3,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_03.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 4,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_04.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 5,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_05.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 6,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_06.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 7,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_07.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 8,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_08.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 9,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_09.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 10,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_10.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 11,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_11.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 12,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_12.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 13,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_13.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 14,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_14.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 15,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_15.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 16,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_16.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 17,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_17.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 18,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_000_depth_18.svg",
+          "role": "depth_svg"
+        }
+      ],
+      "model_object_id": 5,
+      "print_object_id": 34,
+      "region_id": 0,
+      "source_bbox": {
+        "center_x_mm": -6.999999,
+        "center_y_mm": 0.0,
+        "max_x_mm": -1.941415,
+        "max_y_mm": 3.058585,
+        "min_x_mm": -12.058584,
+        "min_y_mm": -3.0585839999999997
+      },
+      "source_layer_id": 39,
+      "source_surface": "top",
+      "source_z_mm": 3.2000000000000015,
+      "surface_index": 0,
+      "timing": {
+        "depth_parallel": true,
+        "depth_timings": [
+          {
+            "cell_count": 15617,
+            "depth": 0,
+            "duration_ms": 21.175451,
+            "layer_id": 39,
+            "region_count": 1,
+            "z_mm": 3.2000000000000015
+          },
+          {
+            "cell_count": 15617,
+            "depth": 1,
+            "duration_ms": 28.475813,
+            "layer_id": 38,
+            "region_count": 1,
+            "z_mm": 3.1200000000000014
+          },
+          {
+            "cell_count": 15617,
+            "depth": 2,
+            "duration_ms": 26.392773,
+            "layer_id": 37,
+            "region_count": 1,
+            "z_mm": 3.0400000000000014
+          },
+          {
+            "cell_count": 15617,
+            "depth": 3,
+            "duration_ms": 40.218898,
+            "layer_id": 36,
+            "region_count": 1,
+            "z_mm": 2.9600000000000013
+          },
+          {
+            "cell_count": 15617,
+            "depth": 4,
+            "duration_ms": 25.091265,
+            "layer_id": 35,
+            "region_count": 1,
+            "z_mm": 2.8800000000000012
+          },
+          {
+            "cell_count": 15617,
+            "depth": 5,
+            "duration_ms": 24.107412,
+            "layer_id": 34,
+            "region_count": 1,
+            "z_mm": 2.800000000000001
+          },
+          {
+            "cell_count": 15617,
+            "depth": 6,
+            "duration_ms": 24.105659,
+            "layer_id": 33,
+            "region_count": 1,
+            "z_mm": 2.720000000000001
+          },
+          {
+            "cell_count": 15617,
+            "depth": 7,
+            "duration_ms": 20.999938,
+            "layer_id": 32,
+            "region_count": 1,
+            "z_mm": 2.640000000000001
+          },
+          {
+            "cell_count": 15617,
+            "depth": 8,
+            "duration_ms": 23.932885,
+            "layer_id": 31,
+            "region_count": 1,
+            "z_mm": 2.560000000000001
+          },
+          {
+            "cell_count": 15617,
+            "depth": 9,
+            "duration_ms": 25.008359,
+            "layer_id": 30,
+            "region_count": 1,
+            "z_mm": 2.480000000000001
+          },
+          {
+            "cell_count": 15617,
+            "depth": 10,
+            "duration_ms": 39.558672,
+            "layer_id": 29,
+            "region_count": 1,
+            "z_mm": 2.400000000000001
+          },
+          {
+            "cell_count": 15617,
+            "depth": 11,
+            "duration_ms": 40.035504,
+            "layer_id": 28,
+            "region_count": 1,
+            "z_mm": 2.3200000000000007
+          },
+          {
+            "cell_count": 15617,
+            "depth": 12,
+            "duration_ms": 34.945832,
+            "layer_id": 27,
+            "region_count": 1,
+            "z_mm": 2.2400000000000007
+          },
+          {
+            "cell_count": 15617,
+            "depth": 13,
+            "duration_ms": 35.094,
+            "layer_id": 26,
+            "region_count": 1,
+            "z_mm": 2.1600000000000006
+          },
+          {
+            "cell_count": 15617,
+            "depth": 14,
+            "duration_ms": 36.970624,
+            "layer_id": 25,
+            "region_count": 1,
+            "z_mm": 2.0800000000000005
+          },
+          {
+            "cell_count": 15617,
+            "depth": 15,
+            "duration_ms": 33.502328,
+            "layer_id": 24,
+            "region_count": 1,
+            "z_mm": 2.0000000000000004
+          },
+          {
+            "cell_count": 15617,
+            "depth": 16,
+            "duration_ms": 20.337681,
+            "layer_id": 23,
+            "region_count": 1,
+            "z_mm": 1.9200000000000006
+          },
+          {
+            "cell_count": 15617,
+            "depth": 17,
+            "duration_ms": 21.160564,
+            "layer_id": 22,
+            "region_count": 1,
+            "z_mm": 1.8400000000000005
+          },
+          {
+            "cell_count": 15617,
+            "depth": 18,
+            "duration_ms": 17.80587,
+            "layer_id": 21,
+            "region_count": 1,
+            "z_mm": 1.7600000000000005
+          }
+        ],
+        "grid": {
+          "active_depth_count": 19,
+          "cells": 15617,
+          "cols": 161,
+          "label_count": 1,
+          "rows": 97,
+          "sampled_cell_count": 15617
+        },
+        "steps": [
+          {
+            "duration_ms": 0.011702,
+            "item_count": 15617,
+            "name": "grid_setup"
+          },
+          {
+            "duration_ms": 17.076383,
+            "item_count": 15617,
+            "name": "sample_and_solve_cells"
+          },
+          {
+            "duration_ms": 0.337061,
+            "item_count": 15617,
+            "name": "merge_small_regions"
+          },
+          {
+            "duration_ms": 1.615616,
+            "item_count": 15617,
+            "name": "td_resolve_merged_regions"
+          },
+          {
+            "duration_ms": 1.646283,
+            "item_count": 1,
+            "name": "debug_region_metadata"
+          },
+          {
+            "duration_ms": 1.528833,
+            "item_count": 1,
+            "name": "debug_stack_region_vectorization"
+          },
+          {
+            "duration_ms": 42.401045,
+            "item_count": 19,
+            "name": "depth_region_vectorization"
+          },
+          {
+            "duration_ms": 30.757848,
+            "item_count": 22,
+            "name": "debug_raster_export"
+          }
+        ],
+        "total_ms": 95.593242
+      },
+      "union_bbox": {
+        "center_x_mm": -6.999999,
+        "center_y_mm": 0.0,
+        "max_x_mm": -1.941415,
+        "max_y_mm": 3.058585,
+        "min_x_mm": -12.058584,
+        "min_y_mm": -3.0585839999999997
+      },
+      "zone_id": 99
+    },
+    {
+      "depths": [
+        {
+          "depth": 0,
+          "layer_id": 39,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_00.svg",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "depth": 1,
+          "layer_id": 38,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_01.svg",
+          "z_mm": 3.1200000000000014
+        },
+        {
+          "depth": 2,
+          "layer_id": 37,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_02.svg",
+          "z_mm": 3.0400000000000014
+        },
+        {
+          "depth": 3,
+          "layer_id": 36,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_03.svg",
+          "z_mm": 2.9600000000000013
+        },
+        {
+          "depth": 4,
+          "layer_id": 35,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_04.svg",
+          "z_mm": 2.8800000000000012
+        },
+        {
+          "depth": 5,
+          "layer_id": 34,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_05.svg",
+          "z_mm": 2.800000000000001
+        },
+        {
+          "depth": 6,
+          "layer_id": 33,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_06.svg",
+          "z_mm": 2.720000000000001
+        },
+        {
+          "depth": 7,
+          "layer_id": 32,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_07.svg",
+          "z_mm": 2.640000000000001
+        },
+        {
+          "depth": 8,
+          "layer_id": 31,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_08.svg",
+          "z_mm": 2.560000000000001
+        },
+        {
+          "depth": 9,
+          "layer_id": 30,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_09.svg",
+          "z_mm": 2.480000000000001
+        },
+        {
+          "depth": 10,
+          "layer_id": 29,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_10.svg",
+          "z_mm": 2.400000000000001
+        },
+        {
+          "depth": 11,
+          "layer_id": 28,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_11.svg",
+          "z_mm": 2.3200000000000007
+        },
+        {
+          "depth": 12,
+          "layer_id": 27,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_12.svg",
+          "z_mm": 2.2400000000000007
+        },
+        {
+          "depth": 13,
+          "layer_id": 26,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_13.svg",
+          "z_mm": 2.1600000000000006
+        },
+        {
+          "depth": 14,
+          "layer_id": 25,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_14.svg",
+          "z_mm": 2.0800000000000005
+        },
+        {
+          "depth": 15,
+          "layer_id": 24,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_15.svg",
+          "z_mm": 2.0000000000000004
+        },
+        {
+          "depth": 16,
+          "layer_id": 23,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_16.svg",
+          "z_mm": 1.9200000000000006
+        },
+        {
+          "depth": 17,
+          "layer_id": 22,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_17.svg",
+          "z_mm": 1.8400000000000005
+        },
+        {
+          "depth": 18,
+          "layer_id": 21,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_18.svg",
+          "z_mm": 1.7600000000000005
+        }
+      ],
+      "files": [
+        {
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_sampled_grid.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "sampled_grid_png",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_resolved_stack_grid.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "resolved_stack_grid_png",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_merged_texture_rgb_patches.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "merged_texture_rgb_patches_png",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "depth": 0,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_00.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 2,
+                "rgb": "#e31a1c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 3.2000000000000015
+        },
+        {
+          "depth": 1,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_01.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 2,
+                "rgb": "#e31a1c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 3.1200000000000014
+        },
+        {
+          "depth": 2,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_02.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 2,
+                "rgb": "#e31a1c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 3.0400000000000014
+        },
+        {
+          "depth": 3,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_03.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 2,
+                "rgb": "#e31a1c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.9600000000000013
+        },
+        {
+          "depth": 4,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_04.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 2,
+                "rgb": "#e31a1c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.8800000000000012
+        },
+        {
+          "depth": 5,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_05.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.800000000000001
+        },
+        {
+          "depth": 6,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_06.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.720000000000001
+        },
+        {
+          "depth": 7,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_07.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.640000000000001
+        },
+        {
+          "depth": 8,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_08.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.560000000000001
+        },
+        {
+          "depth": 9,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_09.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.480000000000001
+        },
+        {
+          "depth": 10,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_10.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.400000000000001
+        },
+        {
+          "depth": 11,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_11.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.3200000000000007
+        },
+        {
+          "depth": 12,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_12.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.2400000000000007
+        },
+        {
+          "depth": 13,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_13.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.1600000000000006
+        },
+        {
+          "depth": 14,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_14.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 1,
+                "rgb": "#33a02c"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.0800000000000005
+        },
+        {
+          "depth": 15,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_15.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 3,
+                "rgb": "#ff7f00"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 2.0000000000000004
+        },
+        {
+          "depth": 16,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_16.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 3,
+                "rgb": "#ff7f00"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 1.9200000000000006
+        },
+        {
+          "depth": 17,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_17.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 3,
+                "rgb": "#ff7f00"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 1.8400000000000005
+        },
+        {
+          "depth": 18,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_filament_depth_18.png",
+          "raster": {
+            "bounds_are_pixel_edges": true,
+            "component_colors": [
+              {
+                "component_id": 3,
+                "rgb": "#ff7f00"
+              }
+            ],
+            "coordinate_space": "model_xy_mm",
+            "height_px": 97,
+            "invalid_rgb": "#000000",
+            "max_x_mm": 12.0625,
+            "max_y_mm": 3.0625,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0,
+            "pixel_edge_to_model_mm": {
+              "origin_x_mm": 1.9375,
+              "origin_y_mm": 3.0625,
+              "x_axis_x_mm_per_px": 0.0625,
+              "x_axis_y_mm_per_px": 0,
+              "y_axis_x_mm_per_px": 0,
+              "y_axis_y_mm_per_px": -0.0625
+            },
+            "pixel_origin": "top_left",
+            "row_order": "max_y_to_min_y",
+            "step_mm": 0.0625,
+            "valid_pixel_count": 15714,
+            "width_px": 162
+          },
+          "role": "filament_slice_png",
+          "z_mm": 1.7600000000000005
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 5.616667,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 14.291917999999999,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_overview.svg",
+          "role": "overview_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.4375,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.9375,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0585839999999997
+          },
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_sampled_texture.svg",
+          "role": "sampled_texture_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.4375,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.9375,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9375,
+            "min_y_mm": -3.0585839999999997
+          },
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_stack_regions.svg",
+          "role": "stack_regions_svg"
+        },
+        {
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_regions.csv",
+          "role": "regions_csv"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 0,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_00.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 1,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_01.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 2,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_02.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 3,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_03.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 4,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_04.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 5,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_05.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 6,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_06.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 7,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_07.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 8,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_08.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 9,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_09.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 10,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_10.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 11,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_11.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 12,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_12.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 13,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_13.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 14,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_14.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 15,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_15.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 16,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_16.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 17,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_17.svg",
+          "role": "depth_svg"
+        },
+        {
+          "bbox": {
+            "center_x_mm": 32.441416,
+            "center_y_mm": 0.85,
+            "max_x_mm": 62.941416,
+            "max_y_mm": 4.758585,
+            "min_x_mm": 1.9414159999999998,
+            "min_y_mm": -3.0585839999999997
+          },
+          "depth": 18,
+          "path": "anchored_zone_99_region_0_object_34_model_5_top_source_layer_00039_z_3p200_surface_001_depth_18.svg",
+          "role": "depth_svg"
+        }
+      ],
+      "model_object_id": 5,
+      "print_object_id": 34,
+      "region_id": 0,
+      "source_bbox": {
+        "center_x_mm": 7.0,
+        "center_y_mm": 0.0,
+        "max_x_mm": 12.058584999999999,
+        "max_y_mm": 3.058585,
+        "min_x_mm": 1.9414159999999998,
+        "min_y_mm": -3.0585839999999997
+      },
+      "source_layer_id": 39,
+      "source_surface": "top",
+      "source_z_mm": 3.2000000000000015,
+      "surface_index": 1,
+      "timing": {
+        "depth_parallel": true,
+        "depth_timings": [
+          {
+            "cell_count": 15714,
+            "depth": 0,
+            "duration_ms": 22.577977,
+            "layer_id": 39,
+            "region_count": 1,
+            "z_mm": 3.2000000000000015
+          },
+          {
+            "cell_count": 15714,
+            "depth": 1,
+            "duration_ms": 36.123007,
+            "layer_id": 38,
+            "region_count": 1,
+            "z_mm": 3.1200000000000014
+          },
+          {
+            "cell_count": 15714,
+            "depth": 2,
+            "duration_ms": 28.422013,
+            "layer_id": 37,
+            "region_count": 1,
+            "z_mm": 3.0400000000000014
+          },
+          {
+            "cell_count": 15714,
+            "depth": 3,
+            "duration_ms": 22.05055,
+            "layer_id": 36,
+            "region_count": 1,
+            "z_mm": 2.9600000000000013
+          },
+          {
+            "cell_count": 15714,
+            "depth": 4,
+            "duration_ms": 36.764058,
+            "layer_id": 35,
+            "region_count": 1,
+            "z_mm": 2.8800000000000012
+          },
+          {
+            "cell_count": 15714,
+            "depth": 5,
+            "duration_ms": 27.332853,
+            "layer_id": 34,
+            "region_count": 1,
+            "z_mm": 2.800000000000001
+          },
+          {
+            "cell_count": 15714,
+            "depth": 6,
+            "duration_ms": 24.152416,
+            "layer_id": 33,
+            "region_count": 1,
+            "z_mm": 2.720000000000001
+          },
+          {
+            "cell_count": 15714,
+            "depth": 7,
+            "duration_ms": 22.999933,
+            "layer_id": 32,
+            "region_count": 1,
+            "z_mm": 2.640000000000001
+          },
+          {
+            "cell_count": 15714,
+            "depth": 8,
+            "duration_ms": 21.765546,
+            "layer_id": 31,
+            "region_count": 1,
+            "z_mm": 2.560000000000001
+          },
+          {
+            "cell_count": 15714,
+            "depth": 9,
+            "duration_ms": 35.621838,
+            "layer_id": 30,
+            "region_count": 1,
+            "z_mm": 2.480000000000001
+          },
+          {
+            "cell_count": 15714,
+            "depth": 10,
+            "duration_ms": 22.767222,
+            "layer_id": 29,
+            "region_count": 1,
+            "z_mm": 2.400000000000001
+          },
+          {
+            "cell_count": 15714,
+            "depth": 11,
+            "duration_ms": 33.823179,
+            "layer_id": 28,
+            "region_count": 1,
+            "z_mm": 2.3200000000000007
+          },
+          {
+            "cell_count": 15714,
+            "depth": 12,
+            "duration_ms": 32.822655,
+            "layer_id": 27,
+            "region_count": 1,
+            "z_mm": 2.2400000000000007
+          },
+          {
+            "cell_count": 15714,
+            "depth": 13,
+            "duration_ms": 32.815622,
+            "layer_id": 26,
+            "region_count": 1,
+            "z_mm": 2.1600000000000006
+          },
+          {
+            "cell_count": 15714,
+            "depth": 14,
+            "duration_ms": 33.735575,
+            "layer_id": 25,
+            "region_count": 1,
+            "z_mm": 2.0800000000000005
+          },
+          {
+            "cell_count": 15714,
+            "depth": 15,
+            "duration_ms": 32.638811,
+            "layer_id": 24,
+            "region_count": 1,
+            "z_mm": 2.0000000000000004
+          },
+          {
+            "cell_count": 15714,
+            "depth": 16,
+            "duration_ms": 23.595673,
+            "layer_id": 23,
+            "region_count": 1,
+            "z_mm": 1.9200000000000006
+          },
+          {
+            "cell_count": 15714,
+            "depth": 17,
+            "duration_ms": 24.268244,
+            "layer_id": 22,
+            "region_count": 1,
+            "z_mm": 1.8400000000000005
+          },
+          {
+            "cell_count": 15714,
+            "depth": 18,
+            "duration_ms": 20.526625,
+            "layer_id": 21,
+            "region_count": 1,
+            "z_mm": 1.7600000000000005
+          }
+        ],
+        "grid": {
+          "active_depth_count": 19,
+          "cells": 15714,
+          "cols": 162,
+          "label_count": 1,
+          "rows": 97,
+          "sampled_cell_count": 15714
+        },
+        "steps": [
+          {
+            "duration_ms": 0.015469,
+            "item_count": 15714,
+            "name": "grid_setup"
+          },
+          {
+            "duration_ms": 12.911342,
+            "item_count": 15714,
+            "name": "sample_and_solve_cells"
+          },
+          {
+            "duration_ms": 0.351288,
+            "item_count": 15714,
+            "name": "merge_small_regions"
+          },
+          {
+            "duration_ms": 1.67658,
+            "item_count": 15714,
+            "name": "td_resolve_merged_regions"
+          },
+          {
+            "duration_ms": 1.691819,
+            "item_count": 1,
+            "name": "debug_region_metadata"
+          },
+          {
+            "duration_ms": 1.570832,
+            "item_count": 1,
+            "name": "debug_stack_region_vectorization"
+          },
+          {
+            "duration_ms": 46.49836,
+            "item_count": 19,
+            "name": "depth_region_vectorization"
+          },
+          {
+            "duration_ms": 30.043109,
+            "item_count": 22,
+            "name": "debug_raster_export"
+          }
+        ],
+        "total_ms": 95.044904
+      },
+      "union_bbox": {
+        "center_x_mm": 7.0,
+        "center_y_mm": 0.0,
+        "max_x_mm": 12.058584999999999,
+        "max_y_mm": 3.058585,
+        "min_x_mm": 1.9414159999999998,
+        "min_y_mm": -3.0585839999999997
+      },
+      "zone_id": 99
+    }
+  ],
+  "layer_exports": [
+    {
+      "files": [
+        {
+          "path": "layer_00032_z_2p640_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 32,
+      "phase": "replacement_trace",
+      "z_mm": 2.640000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00032_z_2p640_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 32,
+      "phase": "replacement_trace",
+      "z_mm": 2.640000000000001
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00038_z_3p120_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 38,
+      "phase": "replacement_trace",
+      "z_mm": 3.1200000000000014
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00032_z_2p640_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 32,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.640000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00032_z_2p640_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 32,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.640000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00038_z_3p120_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 38,
+      "phase": "replacement_trace",
+      "z_mm": 3.1200000000000014
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00035_z_2p880_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 35,
+      "phase": "replacement_trace",
+      "z_mm": 2.8800000000000012
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00021_z_1p760_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 21,
+      "phase": "replacement_trace",
+      "z_mm": 1.7600000000000005
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00021_z_1p760_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 21,
+      "phase": "replacement_trace",
+      "z_mm": 1.7600000000000005
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00021_z_1p760_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 21,
+      "phase": "before_perimeter_trim",
+      "z_mm": 1.7600000000000005
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00021_z_1p760_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 21,
+      "phase": "after_perimeter_trim",
+      "z_mm": 1.7600000000000005
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00023_z_1p920_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 23,
+      "phase": "replacement_trace",
+      "z_mm": 1.9200000000000006
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00023_z_1p920_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 23,
+      "phase": "replacement_trace",
+      "z_mm": 1.9200000000000006
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00035_z_2p880_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 35,
+      "phase": "replacement_trace",
+      "z_mm": 2.8800000000000012
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00038_z_3p120_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 38,
+      "phase": "before_perimeter_trim",
+      "z_mm": 3.1200000000000014
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00022_z_1p840_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 22,
+      "phase": "replacement_trace",
+      "z_mm": 1.8400000000000005
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00025_z_2p080_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 25,
+      "phase": "replacement_trace",
+      "z_mm": 2.0800000000000005
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00023_z_1p920_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 23,
+      "phase": "before_perimeter_trim",
+      "z_mm": 1.9200000000000006
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00037_z_3p040_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 37,
+      "phase": "replacement_trace",
+      "z_mm": 3.0400000000000014
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00037_z_3p040_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 37,
+      "phase": "replacement_trace",
+      "z_mm": 3.0400000000000014
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00030_z_2p480_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 30,
+      "phase": "replacement_trace",
+      "z_mm": 2.480000000000001
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00024_z_2p000_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 24,
+      "phase": "replacement_trace",
+      "z_mm": 2.0000000000000004
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00024_z_2p000_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 24,
+      "phase": "replacement_trace",
+      "z_mm": 2.0000000000000004
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00025_z_2p080_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 25,
+      "phase": "replacement_trace",
+      "z_mm": 2.0800000000000005
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00022_z_1p840_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 22,
+      "phase": "replacement_trace",
+      "z_mm": 1.8400000000000005
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00022_z_1p840_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 22,
+      "phase": "before_perimeter_trim",
+      "z_mm": 1.8400000000000005
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00035_z_2p880_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 35,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.8800000000000012
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00037_z_3p040_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 37,
+      "phase": "before_perimeter_trim",
+      "z_mm": 3.0400000000000014
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00030_z_2p480_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 30,
+      "phase": "replacement_trace",
+      "z_mm": 2.480000000000001
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00036_z_2p960_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 36,
+      "phase": "replacement_trace",
+      "z_mm": 2.9600000000000013
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00038_z_3p120_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 38,
+      "phase": "after_perimeter_trim",
+      "z_mm": 3.1200000000000014
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00033_z_2p720_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 33,
+      "phase": "replacement_trace",
+      "z_mm": 2.720000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00024_z_2p000_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 24,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.0000000000000004
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00024_z_2p000_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 24,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.0000000000000004
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00023_z_1p920_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 23,
+      "phase": "after_perimeter_trim",
+      "z_mm": 1.9200000000000006
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00022_z_1p840_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 22,
+      "phase": "after_perimeter_trim",
+      "z_mm": 1.8400000000000005
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00035_z_2p880_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 35,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.8800000000000012
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00037_z_3p040_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 37,
+      "phase": "after_perimeter_trim",
+      "z_mm": 3.0400000000000014
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00030_z_2p480_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 30,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.480000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00030_z_2p480_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 30,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.480000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00033_z_2p720_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 33,
+      "phase": "replacement_trace",
+      "z_mm": 2.720000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00025_z_2p080_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 25,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.0800000000000005
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00039_z_3p200_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 39,
+      "phase": "replacement_trace",
+      "z_mm": 3.2000000000000015
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00036_z_2p960_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 36,
+      "phase": "replacement_trace",
+      "z_mm": 2.9600000000000013
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00033_z_2p720_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 33,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.720000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00025_z_2p080_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 25,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.0800000000000005
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.441416,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.941416,
+            "max_y_mm": 8.658585,
+            "min_x_mm": -12.058584,
+            "min_y_mm": -3.0585839999999997
+          },
+          "path": "layer_00039_z_3p200_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 39,
+      "phase": "replacement_trace",
+      "z_mm": 3.2000000000000015
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00036_z_2p960_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 36,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.9600000000000013
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00033_z_2p720_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 33,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.720000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00039_z_3p200_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 39,
+      "phase": "before_perimeter_trim",
+      "z_mm": 3.2000000000000015
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00036_z_2p960_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 36,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.9600000000000013
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00039_z_3p200_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 39,
+      "phase": "after_perimeter_trim",
+      "z_mm": 3.2000000000000015
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00027_z_2p240_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 27,
+      "phase": "replacement_trace",
+      "z_mm": 2.2400000000000007
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00026_z_2p160_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 26,
+      "phase": "replacement_trace",
+      "z_mm": 2.1600000000000006
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00027_z_2p240_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 27,
+      "phase": "replacement_trace",
+      "z_mm": 2.2400000000000007
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00026_z_2p160_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 26,
+      "phase": "replacement_trace",
+      "z_mm": 2.1600000000000006
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00034_z_2p800_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 34,
+      "phase": "replacement_trace",
+      "z_mm": 2.800000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00027_z_2p240_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 27,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.2400000000000007
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00026_z_2p160_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 26,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.1600000000000006
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00034_z_2p800_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 34,
+      "phase": "replacement_trace",
+      "z_mm": 2.800000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00027_z_2p240_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 27,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.2400000000000007
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00026_z_2p160_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 26,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.1600000000000006
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00028_z_2p320_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 28,
+      "phase": "replacement_trace",
+      "z_mm": 2.3200000000000007
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00028_z_2p320_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 28,
+      "phase": "replacement_trace",
+      "z_mm": 2.3200000000000007
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00028_z_2p320_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 28,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.3200000000000007
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00034_z_2p800_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 34,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.800000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00034_z_2p800_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 34,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.800000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00028_z_2p320_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 28,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.3200000000000007
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00031_z_2p560_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 31,
+      "phase": "replacement_trace",
+      "z_mm": 2.560000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00031_z_2p560_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 31,
+      "phase": "replacement_trace",
+      "z_mm": 2.560000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00031_z_2p560_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 31,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.560000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00031_z_2p560_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 31,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.560000000000001
+    },
+    {
+      "files": [
+        {
+          "path": "layer_00029_z_2p400_replacement_trace.csv",
+          "role": "replacement_trace_csv"
+        }
+      ],
+      "layer_id": 29,
+      "phase": "replacement_trace",
+      "z_mm": 2.400000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 18.274459,
+            "center_y_mm": 2.8,
+            "max_x_mm": 48.774459,
+            "max_y_mm": 8.825542,
+            "min_x_mm": -12.225541,
+            "min_y_mm": -3.2255409999999998
+          },
+          "path": "layer_00029_z_2p400_replacement_trace.svg",
+          "role": "replacement_trace_svg"
+        }
+      ],
+      "layer_id": 29,
+      "phase": "replacement_trace",
+      "z_mm": 2.400000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00029_z_2p400_before_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 29,
+      "phase": "before_perimeter_trim",
+      "z_mm": 2.400000000000001
+    },
+    {
+      "files": [
+        {
+          "bbox": {
+            "center_x_mm": 17.5,
+            "center_y_mm": 1.5,
+            "max_x_mm": 48.0,
+            "max_y_mm": 7.000000999999999,
+            "min_x_mm": -13.0,
+            "min_y_mm": -4.0
+          },
+          "path": "layer_00029_z_2p400_after_perimeter_trim.svg",
+          "role": "layer_svg"
+        }
+      ],
+      "layer_id": 29,
+      "phase": "after_perimeter_trim",
+      "z_mm": 2.400000000000001
+    }
+  ],
+  "object_exports": [
+    {
+      "bbox": {
+        "center_x_mm": 0.0,
+        "center_y_mm": 0.0,
+        "center_z_mm": 1.600000023841858,
+        "max_x_mm": 13.0,
+        "max_y_mm": 4.0,
+        "max_z_mm": 3.200000047683716,
+        "min_x_mm": -13.0,
+        "min_y_mm": -4.0,
+        "min_z_mm": 0.0
+      },
+      "coordinate_space": "object_slicing_space_mm",
+      "face_count": 24,
+      "model_object_id": 5,
+      "path": "object_34_model_5_slicing_space.obj",
+      "print_object_id": 34,
+      "role": "sliced_object_obj",
+      "transform": "model_object_raw_mesh_with_print_object_trafo_centered",
+      "vertex_count": 16
+    }
+  ],
+  "output_dir": "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-repeat-11/top_surface_coloring_debug/run_1792890829551",
+  "schema_version": 5
+}

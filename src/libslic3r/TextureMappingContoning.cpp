@@ -5,6 +5,8 @@
 #include "Color.hpp"
 #include "ColorSolver.hpp"
 #include "PrintConfig.hpp"
+#include "Exception.hpp"
+#include "SurfaceMixTopStack.hpp"
 #include "libslic3r.h"
 
 #include <algorithm>
@@ -430,9 +432,27 @@ TextureMappingContoningSolver::TextureMappingContoningSolver(const TextureMappin
     m_component_ids = component_ids;
     if (!texture_mapping_contoning_component_colors(config, m_component_ids, m_component_colors))
         m_component_ids.clear();
+    std::string surface_mix_error;
+    if (zone.surface_mix_solver_enabled && zone.top_surface_color_calibration_json.empty())
+        throw SlicingError(
+            "ToniMcQueen SurfaceMix requires a loaded top-surface calibration catalogue; "
+            "generic colour solving is disabled for this mode.");
+    auto surface_mix = SurfaceMixTopStack::from_calibration_json(zone.top_surface_color_calibration_json,
+                                                               m_component_ids, &surface_mix_error);
+    if (!surface_mix_error.empty())
+        throw SlicingError(surface_mix_error);
     if (m_component_ids.empty())
         return;
     m_component_roles = texture_mapping_contoning_component_roles(zone, m_component_ids.size());
+    if (surface_mix) {
+        if (zone.top_surface_contoning_colors_lower_surfaces() ||
+            zone.effective_top_surface_contoning_layer_phase_enabled() ||
+            zone.effective_top_surface_contoning_blue_noise_error_diffusion_enabled() || zone.top_surface_contoning_perimeters_active())
+            throw SlicingError("SurfaceMix top stacks currently require upper surface infill without perimeter recolouring, layer-phase shifting or dithering.");
+        m_surface_mix_top_stack = std::make_shared<const SurfaceMixTopStack>(std::move(*surface_mix));
+        m_components_bottom_to_top = m_component_ids;
+        return; // Never build generic/TD candidates for a whole measured SurfaceMix recipe.
+    }
 
     std::vector<float> background_weights(m_component_colors.size(), 1.f / float(m_component_colors.size()));
     m_background_rgb = mix_color_solver_components(m_component_colors, background_weights, m_mix_model);
@@ -478,6 +498,8 @@ TextureMappingContoningSolver::TextureMappingContoningSolver(const TextureMappin
 
 std::string TextureMappingContoningSolver::calibrated_stack_model_key() const
 {
+    if (m_surface_mix_top_stack)
+        return m_surface_mix_top_stack->cache_key();
     std::string key = m_calibrated_stack_model.valid() ? m_calibrated_stack_model.cache_key() : std::string();
     if (nearest_measured_sample_mode()) {
         key += "|nearest_fallback_mode=" + std::to_string(m_nearest_measured_sample_fallback_mode);
@@ -491,11 +513,14 @@ std::string TextureMappingContoningSolver::calibrated_stack_model_key() const
 
 bool TextureMappingContoningSolver::nearest_measured_sample_mode() const
 {
-    return m_effective_color_prediction_mode == int(TextureMappingZone::ContoningColorPredictionCalibratedNearestMeasuredSample);
+    return m_surface_mix_top_stack ||
+           m_effective_color_prediction_mode == int(TextureMappingZone::ContoningColorPredictionCalibratedNearestMeasuredSample);
 }
 
 int TextureMappingContoningSolver::nearest_measured_sample_stack_depth() const
 {
+    if (m_surface_mix_top_stack)
+        return int(m_surface_mix_top_stack->layer_count());
     if (!nearest_measured_sample_mode() ||
         m_calibrated_stack_model.kind != ColorSolverCalibratedStackModelKind::NearestMeasuredSample ||
         !m_calibrated_stack_model.valid())
@@ -603,6 +628,9 @@ std::optional<std::array<float, 3>> TextureMappingContoningSolver::stack_rgb(
     if (bottom_to_top.empty() || !valid())
         return std::nullopt;
 
+    if (m_surface_mix_top_stack)
+        return lower_surface ? std::nullopt : m_surface_mix_top_stack->measured_stack_rgb(bottom_to_top);
+
     if (!m_td_adjustment_enabled) {
         std::vector<std::array<float, 3>> colors;
         std::vector<float> weights;
@@ -707,6 +735,9 @@ bool TextureMappingContoningSolver::nearest_measured_sample_compatible(
     bool lower_surface,
     bool record_fallback_issue) const
 {
+    if (m_surface_mix_top_stack)
+        return m_surface_mix_top_stack->compatible(stack_layers, visible_depth, surface_to_deep_layer_heights_mm,
+                                                  surface_to_deep_layer_ids, lower_surface);
     if (!nearest_measured_sample_mode() ||
         m_calibrated_stack_model.kind != ColorSolverCalibratedStackModelKind::NearestMeasuredSample ||
         !m_calibrated_stack_model.valid())
@@ -946,6 +977,23 @@ TextureMappingContoningStack TextureMappingContoningSolver::solve_impl(
     TextureMappingContoningStack out;
     if (!valid())
         return out;
+
+    if (m_surface_mix_top_stack) {
+        std::string error;
+        // Select the largest calibrated prefix that the local surface can
+        // physically contain. Prefixes inherit measured order, but reduced
+        // prefixes do not claim the complete stack's measured RGB.
+        const int execution_layers = visible_stack_layers > 0 ?
+            std::min(visible_stack_layers, int(m_surface_mix_top_stack->layer_count())) :
+            int(m_surface_mix_top_stack->layer_count());
+        if (!m_surface_mix_top_stack->compatible(execution_layers, visible_stack_layers, surface_to_deep_layer_heights_mm,
+                                                surface_to_deep_layer_ids, lower_surface, &error))
+            throw SlicingError(error);
+        out.bottom_to_top = m_surface_mix_top_stack->bottom_to_top(target_rgb, size_t(execution_layers));
+        out.rgb = execution_layers == int(m_surface_mix_top_stack->layer_count()) ?
+            m_surface_mix_top_stack->measured_rgb(target_rgb) : target_rgb;
+        return out;
+    }
 
     const int requested_depth = std::clamp(stack_layers,
                                            TextureMappingZone::MinTopSurfaceContoningStackLayers,

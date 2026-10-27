@@ -1,0 +1,13 @@
+[
+  "g++",
+  "-std=c++17",
+  "-O0",
+  "-Wall",
+  "-Wextra",
+  "-I/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/imagemap-audit-20261024/evidence-02",
+  "-I/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/src/libslic3r",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/imagemap-audit-20261024/recipe_boundary_probe.cpp",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/src/libslic3r/SurfaceRecipeField.cpp",
+  "-o",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/imagemap-audit-20261024/evidence-02/recipe_boundary_probe"
+]

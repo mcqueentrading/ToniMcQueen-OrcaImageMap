@@ -13,6 +13,7 @@
 
 #include <string>
 #include <map>
+#include <cstdint>
 
 #include "GUI_Utils.hpp"
 #include "Event.hpp"
@@ -52,6 +53,7 @@ class PrintHostQueueDialog;
 class Plater;
 class MainFrame;
 class ParamsDialog;
+class LiveControlBus;
 #ifdef __WXGTK__
 class ResizeEdgePanel;
 #endif
@@ -200,6 +202,10 @@ class MainFrame : public DPIFrame
     //jump to editor under preview only mode
     bool preview_only_to_editor = false;
 
+    std::unique_ptr<LiveControlBus> m_live_control_bus;
+
+    void apply_live_control_command(uint16_t opcode, uint32_t value_bits);
+
 protected:
     virtual void on_dpi_changed(const wxRect &suggested_rect) override;
     virtual void on_sys_color_changed() override;
@@ -210,7 +216,7 @@ protected:
 
 public:
     MainFrame();
-    ~MainFrame() = default;
+    ~MainFrame();
 #ifdef __APPLE__
     bool get_mac_full_screen() { return m_mac_fullscreen; }
 #endif

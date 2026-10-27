@@ -727,7 +727,6 @@ void PerimeterGenerator::split_one_wall_shell_infill_surfaces(const ExPolygons &
     }
 
     one_wall_fills = union_ex(one_wall_fills, one_wall_fill);
-    multi_wall_polygons = intersection_ex(inner_polygons, orig_polygons);
 
     const double nozzle_diameter = this->print_config->nozzle_diameter.get_at(this->config->wall_filament - 1);
     double infill_spacing_unscaled = this->config->sparse_infill_line_width.get_abs_value(nozzle_diameter);
@@ -735,6 +734,9 @@ void PerimeterGenerator::split_one_wall_shell_infill_surfaces(const ExPolygons &
         infill_spacing_unscaled = Flow::auto_extrusion_width(frInfill, nozzle_diameter);
     fill_clip = offset_ex(orig_polygons,
                           double(ext_perimeter_spacing / 2.) - scale_(infill_spacing_unscaled / 2.));
+    // The caller may alias orig_polygons and multi_wall_polygons. Finish reading
+    // the original boundary before replacing it with the remaining wall area.
+    multi_wall_polygons = intersection_ex(inner_polygons, orig_polygons);
 }
 
 // Port "extra perimeters on overhangs" from PrusaSlicer. Original author: PavelMikus pavel.mikus.mail@seznam.cz

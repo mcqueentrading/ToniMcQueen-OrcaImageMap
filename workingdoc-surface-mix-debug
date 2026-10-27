@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Launch the rebuilt ToniMcQueen SurfaceMix host without replacing the old launcher.
+export GDK_BACKEND="${TONI_GDK_BACKEND:-x11}"
+cd /home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build
+logdir="${XDG_STATE_HOME:-$HOME/.local/state}/tonimcqueen-slicer"
+mkdir -p "$logdir"
+log=$(mktemp "$logdir/surfacemix-startup-$(date +%Y%m%d-%H%M%S)-XXXXXX.log")
+printf 'Display backend: %s\nStartup log: %s\n' "$GDK_BACKEND" "$log"
+exec ./src/Debug/orca-slicer-imagemap "$@" > >(tee -a "$log") 2>&1

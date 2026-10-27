@@ -482,6 +482,20 @@ set(lisbslic3r_sources
     TextureMappingContoning.hpp
     TextureMapping.cpp
     TextureMapping.hpp
+    SurfaceRecipeField.cpp
+    SurfaceRecipeField.hpp
+    SurfaceMixRecipeReport.cpp
+    SurfaceMixRecipeReport.hpp
+    SurfaceMixRecipePreview.cpp
+    SurfaceMixRecipePreview.hpp
+    SurfaceMixTopStack.cpp
+    SurfaceMixTopStack.hpp
+    SurfaceMixSideOffsets.cpp
+    SurfaceMixSideOffsets.hpp
+    SurfaceMixSideBridge.cpp
+    SurfaceMixSideBridge.hpp
+    SurfaceMix3mfBridge/SurfaceMix3mfBridge.cpp
+    SurfaceMix3mfBridge/SurfaceMix3mfBridge.hpp
     TriangulateWall.cpp
     TriangulateWall.hpp
     utils.cpp

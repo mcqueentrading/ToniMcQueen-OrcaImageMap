@@ -12,6 +12,7 @@
 //#include <wx/glcanvas.h>
 #include <wx/filename.h>
 #include <wx/debug.h>
+#include <wx/msgdlg.h>
 #include <wx/utils.h>
 
 #include <boost/algorithm/string/predicate.hpp>
@@ -23,6 +24,7 @@
 #include "libslic3r/PrintConfig.hpp"
 #include "libslic3r/SLAPrint.hpp"
 #include "libslic3r/PresetBundle.hpp"
+#include "libslic3r/SurfaceRecipeField.hpp"
 
 #include "Tab.hpp"
 #include "ProgressStatusBar.hpp"
@@ -48,7 +50,10 @@
 #include "../Utils/MacDarkMode.hpp"
 
 #include <fstream>
+#include <cstring>
 #include <string_view>
+
+#include <nlohmann/json.hpp>
 
 #include "GUI_App.hpp"
 #include "UnsavedChangesDialog.hpp"
@@ -60,6 +65,7 @@
 #include "MarkdownTip.hpp"
 #include "NetworkTestDialog.hpp"
 #include "ConfigWizard.hpp"
+#include "LiveControlBus.hpp"
 #include "Widgets/WebView.hpp"
 #include "DailyTips.hpp"
 #include "FilamentMapDialog.hpp"
@@ -761,7 +767,78 @@ DPIFrame(NULL, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, BORDERLESS_FRAME_
     wxGetApp().persist_window_geometry(&m_settings_dialog, true);
     // bind events from DiffDlg
 
+    m_live_control_bus = std::make_unique<LiveControlBus>([this](LiveControlCommand command) {
+        CallAfter([this, command] { apply_live_control_command(command.opcode, command.value_bits); });
+    });
+    m_live_control_bus->start();
+    BOOST_LOG_TRIVIAL(info) << "live control socket: " << m_live_control_bus->socket_path();
+
     bind_diff_dialog();
+}
+
+MainFrame::~MainFrame()
+{
+    m_live_control_bus.reset();
+}
+
+void MainFrame::apply_live_control_command(uint16_t opcode, uint32_t value_bits)
+{
+    const char* key = nullptr;
+    std::string value;
+    switch (opcode) {
+    case 1:
+        key = "enable_prime_tower";
+        if (value_bits > 1)
+            return;
+        value = value_bits ? "1" : "0";
+        break;
+    case 2:
+        key = "wall_loops";
+        if (value_bits < 1 || value_bits > 20)
+            return;
+        value = std::to_string(value_bits);
+        break;
+    case 3: {
+        key = "outer_wall_line_width";
+        float width = 0.0f;
+        std::memcpy(&width, &value_bits, sizeof(width));
+        if (!(width >= 0.1f && width <= 2.0f))
+            return;
+        value = std::to_string(width);
+        break;
+    }
+    case 4: {
+        key = "layer_height";
+        float height = 0.0f;
+        std::memcpy(&height, &value_bits, sizeof(height));
+        if (!(height >= 0.01f && height <= 1.0f))
+            return;
+        value = std::to_string(height);
+        break;
+    }
+    default:
+        BOOST_LOG_TRIVIAL(warning) << "ignored unknown live control opcode=" << opcode;
+        return;
+    }
+
+    try {
+        const DynamicPrintConfig full_config = wxGetApp().preset_bundle->full_config();
+        const ConfigOption* current = full_config.option(key);
+        if (current == nullptr)
+            return;
+
+        DynamicPrintConfig change;
+        change.set_key_value(key, current->clone());
+        change.set_deserialize_strict(key, value);
+        load_config(change);
+        if (m_plater) {
+            m_plater->on_config_change(change);
+            m_plater->schedule_background_process();
+        }
+        BOOST_LOG_TRIVIAL(info) << "applied live control opcode=" << opcode << " key=" << key;
+    } catch (const std::exception& error) {
+        BOOST_LOG_TRIVIAL(warning) << "live control rejected opcode=" << opcode << ": " << error.what();
+    }
 }
 
 void MainFrame::bind_diff_dialog()
@@ -3232,6 +3309,65 @@ void MainFrame::init_menubar_as_editor()
         "", nullptr, []() { return true; }, this, 1);
     //parent_menu->Insert(1, preference_item);
 #endif
+    wxMenu* toolsMenu = new wxMenu();
+    append_menu_item(toolsMenu, wxID_ANY, _L("SurfaceMix Diagnostics") + dots,
+        _L("Inspect a Rust SurfaceMix recipe field without changing slicing"),
+        [this](wxCommandEvent&) {
+            wxFileDialog dialog(this, _L("Open SurfaceMix recipe field"), wxEmptyString, wxEmptyString,
+                                _L("JSON files (*.json)|*.json|All files (*.*)|*.*"),
+                                wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+            if (dialog.ShowModal() != wxID_OK)
+                return;
+
+            std::ifstream input(dialog.GetPath().ToStdString());
+            if (!input) {
+                wxMessageBox(_L("The selected recipe field could not be opened."), _L("SurfaceMix Diagnostics"),
+                             wxOK | wxICON_ERROR, this);
+                return;
+            }
+
+            nlohmann::json root;
+            try {
+                input >> root;
+            } catch (const std::exception& error) {
+                wxMessageBox(from_u8(std::string("Invalid JSON: ") + error.what()), _L("SurfaceMix Diagnostics"),
+                             wxOK | wxICON_ERROR, this);
+                return;
+            }
+
+            std::string validation_error;
+            const auto field = Slic3r::SurfaceRecipeField::from_json(root, &validation_error);
+            if (!field) {
+                wxMessageBox(from_u8(std::string("Recipe field rejected:\n") + validation_error),
+                             _L("SurfaceMix Diagnostics"), wxOK | wxICON_WARNING, this);
+                return;
+            }
+
+            std::ostringstream report;
+            report << "Status: VALIDATED (read-only)\n"
+                   << "Schema: " << field->schema << "\n"
+                   << "Cells: " << field->cells.size() << "\n"
+                   << "Complete stacks: " << field->stacks.size() << "\n"
+                   << "Transition bands: " << field->transition_bands.size() << "\n"
+                   << "Planar fixture only: " << (field->planar_fixture_only ? "yes" : "no") << "\n\n"
+                   << "Cells and inward stacks:\n";
+            for (const auto& cell : field->cells) {
+                report << "- " << cell.cell_id << " -> stack " << cell.stack_id << "\n";
+                const auto* stack = field->stack_for_cell(cell);
+                if (stack == nullptr)
+                    continue;
+                for (const auto& interval : stack->surface_to_deep) {
+                    const char* component = interval.component == 0 ? "C" :
+                                            interval.component == 1 ? "M" :
+                                            interval.component == 2 ? "Y" : "W";
+                    report << "    " << component << " " << interval.start_um << ".."
+                           << interval.end_um << " um\n";
+                }
+            }
+            report << "\nNo filament assignment, G-code change, dithering, or printing was performed.";
+            wxMessageBox(from_u8(report.str()), _L("SurfaceMix Diagnostics"), wxOK | wxICON_INFORMATION, this);
+        }, "", nullptr, []() { return true; }, this);
+
     // Help menu
     auto helpMenu = generate_help_menu();
 
@@ -3241,6 +3377,7 @@ void MainFrame::init_menubar_as_editor()
         m_topbar->AddDropDownSubMenu(editMenu, _L("Edit"));
     if (viewMenu)
         m_topbar->AddDropDownSubMenu(viewMenu, _L("View"));
+    m_topbar->AddDropDownSubMenu(toolsMenu, _L("Tools"));
     //BBS add Preference
 
     append_menu_item(

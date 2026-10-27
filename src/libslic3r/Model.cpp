@@ -45,6 +45,7 @@
 // BBS: for segment
 #include "MeshBoolean.hpp"
 #include "Format/3mf.hpp"
+#include "SurfaceMix3mfBridge/SurfaceMix3mfBridge.hpp"
 
 // Transtltion
 #include "I18N.hpp"
@@ -1147,6 +1148,15 @@ Model Model::read_from_archive(const std::string& input_file, DynamicPrintConfig
 
     if (!result)
         throw Slic3r::RuntimeError(_L("Loading of a model file failed."));
+
+    if (out_file_type != En3mfType::From_Prusa && boost::algorithm::iends_with(input_file, ".3mf")) {
+        std::string bridge_error;
+        const auto bridge_result = SurfaceMix3mfBridge::apply(input_file, *config, &bridge_error);
+        if (bridge_result == SurfaceMix3mfBridge::Result::Rejected)
+            BOOST_LOG_TRIVIAL(warning) << "SurfaceMix 3MF metadata was rejected: " << bridge_error;
+        else if (bridge_result == SurfaceMix3mfBridge::Result::Applied)
+            BOOST_LOG_TRIVIAL(info) << "SurfaceMix 3MF metadata imported into the ImageMap zone";
+    }
 
     if ((options & LoadStrategy::LoadConfig) && out_file_type != En3mfType::From_Prusa)
         auto_add_missing_mmu_segmentation_filaments(model, *config);

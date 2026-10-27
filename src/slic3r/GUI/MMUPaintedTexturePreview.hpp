@@ -8,9 +8,11 @@
 #include "libslic3r/Model.hpp"
 #include "libslic3r/TextureMapping.hpp"
 #include "libslic3r/TriangleSelector.hpp"
+#include "libslic3r/SurfaceMixRecipePreview.hpp"
 
 #include <array>
 #include <functional>
+#include <memory>
 #include <optional>
 #include <utility>
 #include <vector>
@@ -18,6 +20,27 @@
 namespace Slic3r {
 
 class TextureMappingManager;
+
+struct SurfaceMixRecipePreviewSettings
+{
+    std::shared_ptr<const SurfaceMixRecipePreview> catalog;
+    SurfaceMixPreviewMode mode{SurfaceMixPreviewMode::Off};
+    double depth_mm{0.0};
+    size_t model_id{0};
+    uint64_t zone_stable_id{0};
+    unsigned zone_id{0};
+    size_t revision{0};
+};
+
+// GUI-thread-only session state. Never serialized into a model or print configuration.
+SurfaceMixRecipePreviewSettings surface_mix_recipe_preview_settings(const Model &model, const TextureMappingZone &zone);
+SurfaceMixRecipePreviewSettings surface_mix_recipe_preview_snapshot();
+void restore_surface_mix_recipe_preview_snapshot(const SurfaceMixRecipePreviewSettings &snapshot);
+void set_surface_mix_recipe_preview(const Model &model, const TextureMappingZone &zone,
+                                   std::shared_ptr<const SurfaceMixRecipePreview> catalog,
+                                   SurfaceMixPreviewMode mode, double depth_mm);
+bool surface_mix_recipe_preview_active(const ModelVolume &volume, unsigned filament_id,
+                                      size_t num_physical, const TextureMappingManager *texture_mgr);
 
 using SurfaceGradientAnchorResolver = std::function<std::optional<Vec3f>(const TextureMappingZone::LinearGradientAnchor &)>;
 using SurfaceGradientAnchorRadiusResolver = std::function<std::optional<float>(const TextureMappingZone::LinearGradientAnchor &)>;

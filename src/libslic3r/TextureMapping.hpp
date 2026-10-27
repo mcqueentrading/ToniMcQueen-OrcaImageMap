@@ -484,6 +484,9 @@ struct TextureMappingZone
 
     int         texture_mapping_mode = DefaultTextureMappingMode;
     int         filament_color_mode = DefaultFilamentColorMode;
+    // Selects the measured SurfaceMix pipeline while retaining CMYW channel semantics.
+    // Execution remains gated until the SurfaceMix path is explicitly dispatched.
+    bool        surface_mix_solver_enabled = false;
     bool        force_sequential_filaments = DefaultForceSequentialFilaments;
     bool        reduce_outer_surface_texture = DefaultReduceOuterSurfaceTexture;
     bool        seam_hiding = DefaultSeamHiding;
@@ -813,6 +816,7 @@ struct TextureMappingZone
     {
         texture_mapping_mode = DefaultTextureMappingMode;
         filament_color_mode = DefaultFilamentColorMode;
+        surface_mix_solver_enabled = false;
         force_sequential_filaments = DefaultForceSequentialFilaments;
         reduce_outer_surface_texture = DefaultReduceOuterSurfaceTexture;
         seam_hiding = DefaultSeamHiding;

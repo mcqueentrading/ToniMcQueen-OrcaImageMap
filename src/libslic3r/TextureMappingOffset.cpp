@@ -12,6 +12,7 @@
 #include "Layer.hpp"
 #include "Model.hpp"
 #include "Print.hpp"
+#include "SurfaceMixSideBridge.hpp"
 #include "TriangleMesh.hpp"
 
 #include <algorithm>
@@ -3518,6 +3519,17 @@ std::optional<TextureMappingOffsetContext> build_texture_mapping_offset_context_
     if (component_ids.empty())
         return std::nullopt;
 
+    std::string surface_mix_side_error;
+    auto surface_mix_candidates = surface_mix_side_candidates(zone, component_ids, &surface_mix_side_error);
+    const bool surface_mix_side_active = bool(surface_mix_candidates);
+    if (!surface_mix_side_error.empty())
+        throw SlicingError(surface_mix_side_error + ". No generic side-colour fallback was used.");
+    if (surface_mix_candidates &&
+        (!vertex_color_match_mode || zone.texture_mapping_mode == int(TextureMappingZone::TextureMappingRawValues) ||
+         zone.transmission_distance_calibration_mode != int(TextureMappingZone::TDCalibrationCalibratedNearestMeasuredSample) ||
+         zone.dithering_enabled || std::abs(zone.tone_gamma - 1.f) > 1e-6f || raw_top_surface_depth_override))
+        throw SlicingError("SurfaceMix side offsets require target-colour mode, measured side calibration, unit gamma and no dithering/raw atlas.");
+
     const int layer_index = int(layer.id());
     const int object_layer_count = int(print_object.layer_count());
     const float z_progress = object_layer_count > 1 ?
@@ -3622,6 +3634,8 @@ std::optional<TextureMappingOffsetContext> build_texture_mapping_offset_context_
 
     const float global_strength_factor =
         std::clamp(float(print_config.texture_mapping_outer_wall_gradient_global_strength.value) / 100.f, 0.f, 1.f);
+    if (surface_mix_side_active && (!std::isfinite(global_strength_factor) || std::abs(global_strength_factor - 1.f) > 1e-6f))
+        throw SlicingError("SurfaceMix side offsets require global wall-gradient strength 100%; amplitudes were not rescaled.");
     if (global_strength_factor <= EPSILON)
         return std::nullopt;
 
@@ -3700,7 +3714,7 @@ std::optional<TextureMappingOffsetContext> build_texture_mapping_offset_context_
     std::optional<ColorSolverCandidateSet> calibrated_side_candidates;
     const ColorSolverCandidateSet *calibrated_side_candidates_ptr = nullptr;
     if (calibrated_side_mode) {
-        calibrated_side_candidates =
+        calibrated_side_candidates = surface_mix_candidates ? std::move(surface_mix_candidates) :
             texture_mapping_side_surface_color_calibrated_candidates(zone,
                                                                      component_colors,
                                                                      component_transmission_distances_mm);
@@ -3727,6 +3741,8 @@ std::optional<TextureMappingOffsetContext> build_texture_mapping_offset_context_
                                                                  raw_surface_usage);
         if (weight_field.empty())
             return std::nullopt;
+        if (surface_mix_side_active && weight_field.raw_component_weights_from_texture)
+            throw SlicingError("SurfaceMix measured side offsets cannot be overridden by a raw filament-offset texture atlas.");
     }
 
     const TransmissionDistanceCalibrationContext td_calibration_context =

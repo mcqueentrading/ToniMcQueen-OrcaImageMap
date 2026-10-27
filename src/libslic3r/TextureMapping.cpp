@@ -2,6 +2,7 @@
 
 #include "TextureMapping.hpp"
 #include "ColorSolver.hpp"
+#include "SurfaceMixTopStack.hpp"
 
 #include <array>
 #include <boost/log/trivial.hpp>
@@ -1663,6 +1664,28 @@ static std::vector<std::string> calibration_component_order_from_json(const nloh
     return out;
 }
 
+static bool calibration_declares_cmyw(const std::string &serialized)
+{
+    if (serialized.empty())
+        return false;
+
+    const nlohmann::json root = nlohmann::json::parse(serialized, nullptr, false);
+    if (root.is_discarded() || !root.is_object())
+        return false;
+
+    const std::vector<std::string> order = calibration_component_order_from_json(root);
+    if (order.size() != 4)
+        return false;
+
+    static constexpr std::array<const char *, 4> expected = {
+        "cyan", "magenta", "yellow", "white"
+    };
+    for (size_t idx = 0; idx < expected.size(); ++idx)
+        if (lower_ascii(order[idx]) != expected[idx])
+            return false;
+    return true;
+}
+
 static std::vector<TextureMappingColorCalibrationFilament> calibration_filaments_from_json(const nlohmann::json &root)
 {
     std::vector<TextureMappingColorCalibrationFilament> filaments;
@@ -2434,6 +2457,7 @@ bool TextureMappingZone::operator==(const TextureMappingZone &rhs) const
            offset_angle_mode == rhs.offset_angle_mode &&
            texture_mapping_mode == rhs.texture_mapping_mode &&
            filament_color_mode == rhs.filament_color_mode &&
+           surface_mix_solver_enabled == rhs.surface_mix_solver_enabled &&
            force_sequential_filaments == rhs.force_sequential_filaments &&
            reduce_outer_surface_texture == rhs.reduce_outer_surface_texture &&
            seam_hiding == rhs.seam_hiding &&
@@ -2814,6 +2838,7 @@ std::string TextureMappingManager::serialize_entries()
                                                        int(TextureMappingZone::TextureMappingFilamentBlending),
                                                        int(TextureMappingZone::TextureMappingRawValues)));
         texture["color_model"] = color_model_name(zone.filament_color_mode);
+        texture["surface_mix_solver"] = zone.surface_mix_solver_enabled ? "tonimcqueen_surfacemix" : "generic";
         texture["ordered_roles"] = zone.force_sequential_filaments;
         texture["reduce_outer_surface_texture"] = false;
         texture["hide_seams"] = zone.seam_hiding;
@@ -2858,8 +2883,23 @@ std::string TextureMappingManager::serialize_entries()
                                  TextureMappingZone::DefaultTopSurfaceContoningAngleThresholdDeg),
                        TextureMappingZone::MinTopSurfaceContoningAngleThresholdDeg,
                        TextureMappingZone::MaxTopSurfaceContoningAngleThresholdDeg);
-        const int calibrated_pattern_filaments =
+        int calibrated_pattern_filaments =
             texture_mapping_top_surface_contoning_calibrated_pattern_filaments(zone);
+        if (zone.surface_mix_solver_enabled) {
+            // Preserve the full measured catalogue, but serialize only the
+            // explicit SurfaceMix execution prefix into ImageMap settings.
+            const auto root = nlohmann::json::parse(zone.top_surface_color_calibration_json, nullptr, false);
+            if (root.is_object() && root.contains(SurfaceMixTopStack::transport_key)) {
+                const auto &transport = root.at(SurfaceMixTopStack::transport_key);
+                const auto execution_layers = transport.value(
+                    "execution_layers", int(SurfaceMixTopStack::default_execution_layer_count));
+                if (execution_layers > 0)
+                    calibrated_pattern_filaments = std::clamp(
+                        execution_layers,
+                        TextureMappingZone::MinTopSurfaceContoningPatternFilaments,
+                        TextureMappingZone::MaxTopSurfaceContoningPatternFilaments);
+            }
+        }
         const int top_surface_contoning_pattern_filaments =
             calibrated_pattern_filaments > 0 ?
                 calibrated_pattern_filaments :
@@ -3104,6 +3144,9 @@ void TextureMappingManager::load_entries(const std::string &serialized,
         const nlohmann::json texture = entry.value("texture_options", nlohmann::json::object());
         zone.texture_mapping_mode = mapping_mode_from_name(texture.value("mode", std::string("target_color")));
         zone.filament_color_mode = color_model_from_name(texture.value("color_model", std::string("cmyk")));
+        zone.surface_mix_solver_enabled = texture.value("surface_mix_solver", std::string("generic")) == "tonimcqueen_surfacemix";
+        if (zone.surface_mix_solver_enabled)
+            zone.filament_color_mode = int(TextureMappingZone::FilamentColorCMYW);
         zone.force_sequential_filaments = texture.value("ordered_roles", false);
         zone.reduce_outer_surface_texture = false;
         zone.seam_hiding = texture.value("hide_seams", false);
@@ -3318,6 +3361,17 @@ void TextureMappingManager::load_entries(const std::string &serialized,
                 zone.top_surface_color_calibration_name =
                     texture_mapping_top_surface_color_calibration_display_name(zone.top_surface_color_calibration_json);
         }
+        // A SurfaceMix transport is an explicit solver declaration even when
+        // an older project omitted the separate solver flag.
+        const auto top_calibration_root =
+            nlohmann::json::parse(zone.top_surface_color_calibration_json, nullptr, false);
+        if (top_calibration_root.is_object() &&
+            top_calibration_root.contains(SurfaceMixTopStack::transport_key) &&
+            top_calibration_root.at(SurfaceMixTopStack::transport_key).value("enabled", false)) {
+            zone.surface_mix_solver_enabled = true;
+            zone.filament_color_mode = int(TextureMappingZone::FilamentColorCMYW);
+            zone.force_sequential_filaments = true;
+        }
         if (TextureMappingZone::top_surface_contoning_color_prediction_mode_is_calibrated(zone.top_surface_contoning_color_prediction_mode) &&
             !texture_mapping_parse_top_surface_color_calibration(zone.top_surface_color_calibration_json)) {
             zone.top_surface_contoning_color_prediction_mode =
@@ -3329,11 +3383,25 @@ void TextureMappingManager::load_entries(const std::string &serialized,
                 zone.top_surface_contoning_color_prediction_mode =
                     texture_mapping_top_surface_color_calibration_first_supported_mode(zone.top_surface_color_calibration_json);
         }
-        if (const int calibrated_pattern_filaments =
-                texture_mapping_top_surface_contoning_calibrated_pattern_filaments(zone);
-            calibrated_pattern_filaments > 0) {
+        int calibrated_pattern_filaments =
+            texture_mapping_top_surface_contoning_calibrated_pattern_filaments(zone);
+        if (zone.surface_mix_solver_enabled) {
+            const auto root = nlohmann::json::parse(zone.top_surface_color_calibration_json, nullptr, false);
+            if (root.is_object() && root.contains(SurfaceMixTopStack::transport_key)) {
+                const auto &transport = root.at(SurfaceMixTopStack::transport_key);
+                const auto execution_layers = transport.value(
+                    "execution_layers", int(SurfaceMixTopStack::default_execution_layer_count));
+                if (execution_layers > 0)
+                    calibrated_pattern_filaments = std::clamp(
+                        execution_layers,
+                        TextureMappingZone::MinTopSurfaceContoningPatternFilaments,
+                        TextureMappingZone::MaxTopSurfaceContoningPatternFilaments);
+            }
+        }
+        if (calibrated_pattern_filaments > 0) {
             zone.top_surface_contoning_pattern_filaments = calibrated_pattern_filaments;
-            zone.top_surface_contoning_stack_layers =
+            zone.top_surface_contoning_stack_layers = zone.surface_mix_solver_enabled ?
+                calibrated_pattern_filaments :
                 std::max(zone.top_surface_contoning_stack_layers,
                          zone.top_surface_contoning_pattern_filaments);
         }
@@ -3349,6 +3417,27 @@ void TextureMappingManager::load_entries(const std::string &serialized,
             if (zone.side_surface_color_calibration_name.empty())
                 zone.side_surface_color_calibration_name =
                     texture_mapping_side_surface_color_calibration_display_name(zone.side_surface_color_calibration_json);
+        }
+        // Older ImageMap projects may contain calibrated CMYW data while
+        // retaining the generic/default solver selections. Promote only that
+        // unambiguous case; explicit non-CMYW choices remain unchanged.
+        if (zone.is_image_texture() &&
+            zone.filament_color_mode == int(TextureMappingZone::FilamentColorAny) &&
+            component_ids.size() == 4 &&
+            (calibration_declares_cmyw(zone.top_surface_color_calibration_json) ||
+             calibration_declares_cmyw(zone.side_surface_color_calibration_json)))
+            zone.filament_color_mode = int(TextureMappingZone::FilamentColorCMYW);
+        if (zone.is_image_texture() &&
+            zone.filament_color_mode == int(TextureMappingZone::FilamentColorCMYW)) {
+            if (zone.top_surface_contoning_color_prediction_mode ==
+                    TextureMappingZone::DefaultTopSurfaceContoningColorPredictionMode &&
+                texture_mapping_parse_top_surface_color_calibration(zone.top_surface_color_calibration_json)) {
+                const int calibrated_mode = int(TextureMappingZone::ContoningColorPredictionCalibratedNearestMeasuredSample);
+                const std::vector<int> supported_modes =
+                    texture_mapping_top_surface_color_calibration_supported_modes(zone.top_surface_color_calibration_json);
+                if (std::find(supported_modes.begin(), supported_modes.end(), calibrated_mode) != supported_modes.end())
+                    zone.top_surface_contoning_color_prediction_mode = calibrated_mode;
+            }
         }
         zone.apply_top_surface_contoning_experimental_defaults();
         zone.compact_offset_mode = texture.value("compact_offset_mode", TextureMappingZone::DefaultCompactOffsetMode);
@@ -3395,6 +3484,20 @@ void TextureMappingManager::load_entries(const std::string &serialized,
             zone.transmission_distance_calibration_mode =
                 TextureMappingZone::DefaultTransmissionDistanceCalibrationMode;
         }
+        // Apply the calibrated side solver after parsing the persisted mode.
+        // Older ImageMap projects omitted this field; do not override an
+        // explicit absolute/neighbor/disabled selection.
+        const bool has_explicit_side_mode =
+            texture.contains("transmission_distance_calibration") ||
+            texture.contains("transmission_distance_calibration_enabled");
+        if (zone.is_image_texture() &&
+            zone.filament_color_mode == int(TextureMappingZone::FilamentColorCMYW) &&
+            !has_explicit_side_mode &&
+            zone.transmission_distance_calibration_mode ==
+                TextureMappingZone::DefaultTransmissionDistanceCalibrationMode &&
+            texture_mapping_parse_side_surface_color_calibration(zone.side_surface_color_calibration_json))
+            zone.transmission_distance_calibration_mode =
+                int(TextureMappingZone::TDCalibrationCalibratedNearestMeasuredSample);
         zone.auto_adjust_filament_selection = texture.value("auto_adjust_filaments", true);
         zone.filament_strengths_pct = normalize_strengths(floats_from_json(texture.value("strength_pct", nlohmann::json::array())));
         zone.filament_minimum_offsets_pct =

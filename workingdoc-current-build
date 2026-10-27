@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export GDK_BACKEND="${TONI_GDK_BACKEND:-x11}"
+cd /home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build/src/Debug
+logdir="${XDG_STATE_HOME:-$HOME/.local/state}/tonimcqueen-slicer"
+mkdir -p "$logdir"
+log=$(mktemp "$logdir/current-build-$(date +%Y%m%d-%H%M%S)-XXXXXX.log")
+printf 'Display backend: %s\nStartup log: %s\n' "$GDK_BACKEND" "$log"
+exec ./orca-slicer-imagemap "$@" > >(tee -a "$log") 2>&1

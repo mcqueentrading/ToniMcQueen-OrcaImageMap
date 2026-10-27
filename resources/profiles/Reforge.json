@@ -1,0 +1,34 @@
+{
+    "name": "Reforge",
+    "url": "",
+    "version": "02.03.02.60",
+    "force_update": "0",
+    "description": "Reforge Creator 5 Pro profiles for ToniMcQueen-Slicer ImageMap and SurfaceMix work.",
+    "machine_model_list": [
+        {"name": "Flashforge Creator 5 Pro", "sub_path": "machine/Flashforge Creator 5 Pro.json"}
+    ],
+    "machine_list": [
+        {"name": "Reforge Creator 5 Pro 0.4 nozzle", "sub_path": "machine/Reforge Creator 5 Pro 0.4 nozzle.json"},
+        {"name": "Reforge Creator 5 Pro 0.4 nozzle ImageMap FullColour Safe", "sub_path": "machine/Reforge Creator 5 Pro 0.4 nozzle ImageMap FullColour Safe.json"},
+        {"name": "Reforge Creator 5 Pro 0.4 nozzle ImageMap SAFE ALLOW", "sub_path": "machine/Reforge Creator 5 Pro 0.4 nozzle ImageMap SAFE ALLOW.json"},
+        {"name": "Reforge Creator 5 Pro 0.4 nozzle ImageMap Snapshot 60s FullColour", "sub_path": "machine/Reforge Creator 5 Pro 0.4 nozzle ImageMap Snapshot 60s FullColour.json"},
+        {"name": "Reforge Creator 5 Pro 0.4 nozzle Snapshot 60s Quality", "sub_path": "machine/Reforge Creator 5 Pro 0.4 nozzle Snapshot 60s Quality.json"},
+        {"name": "Reforge Creator 5 Pro 0.4 nozzle Snapshot 60s", "sub_path": "machine/Reforge Creator 5 Pro 0.4 nozzle Snapshot 60s.json"},
+        {"name": "Reforge Creator 5 Pro 0.4 nozzle WarmTools 120C", "sub_path": "machine/Reforge Creator 5 Pro 0.4 nozzle WarmTools 120C.json"}
+    ],
+    "process_list": [
+        {"name": "0.08mm Reforge ImageMap FullColour @C5P", "sub_path": "process/0.08mm Reforge ImageMap FullColour @C5P.json"},
+        {"name": "0.08mm Reforge ImageMap FullColour SAFE ALLOW @C5P", "sub_path": "process/0.08mm Reforge ImageMap FullColour SAFE ALLOW @C5P.json"},
+        {"name": "0.20mm Reforge First Test @C5P", "sub_path": "process/0.20mm Reforge First Test @C5P.json"},
+        {"name": "0.20mm Reforge Quality Snapshot @C5P", "sub_path": "process/0.20mm Reforge Quality Snapshot @C5P.json"},
+        {"name": "0.20mm Reforge Quality Snapshot ARC TEST @C5P", "sub_path": "process/0.20mm Reforge Quality Snapshot ARC TEST @C5P.json"}
+    ],
+    "filament_list": [
+        {"name": "Elegoo PLA @Reforge C5P", "sub_path": "filament/Elegoo PLA @Reforge C5P.json"},
+        {"name": "Elegoo PLA Black K @Reforge C5P", "sub_path": "filament/Elegoo PLA Black K @Reforge C5P.json"},
+        {"name": "Elegoo PLA Cyan @Reforge C5P", "sub_path": "filament/Elegoo PLA Cyan @Reforge C5P.json"},
+        {"name": "Elegoo PLA Magenta @Reforge C5P", "sub_path": "filament/Elegoo PLA Magenta @Reforge C5P.json"},
+        {"name": "Elegoo PLA White @Reforge C5P", "sub_path": "filament/Elegoo PLA White @Reforge C5P.json"},
+        {"name": "Elegoo PLA Yellow @Reforge C5P", "sub_path": "filament/Elegoo PLA Yellow @Reforge C5P.json"}
+    ]
+}

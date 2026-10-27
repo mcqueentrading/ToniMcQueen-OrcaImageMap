@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg height="98.171692" width="630.000000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <marker id="endArrow" markerHeight="8" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="1" refY="5" viewBox="0 0 10 10">
+      <polyline fill="darkblue" points="0,0 10,5 0,10 1,5" />
+   </marker>
+<rect fill='white' stroke='none' x='0' y='0' width='630.000000' height='98.171692'/>
+   <path d="M 111.172 27 10 27 10 88.1717 111.172 88.1717 z " style="fill: #d0d0d0; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.180000" />
+   <path d="M 111.172 27 10 27 10 87.5859 111.172 87.5859 z " style="fill: #ff7f00; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.420000" />
+   <path d="M 111.172 27 10 27 10 88.1717 111.172 88.1717 z" style="fill: none; stroke: #888888; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 111.172 27 10 27 10 87.5859 111.172 87.5859 z" style="fill: none; stroke: #ff7f00; stroke-width: 0.250000; fill-type: evenodd"  fill-opacity="1.000000" />
+<circle cx="20.000000" cy="12.000000" r="10" fill="#d0d0d0"/><text x="40.000000" y="12.000000" font-family="sans-serif" font-size="10px" fill="black">layer infill</text></svg>

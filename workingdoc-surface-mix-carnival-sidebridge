@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export GDK_BACKEND="${TONI_GDK_BACKEND:-x11}"
+cd /home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build/src/Release
+logdir="${XDG_STATE_HOME:-$HOME/.local/state}/tonimcqueen-slicer"
+mkdir -p "$logdir"
+log=$(mktemp "$logdir/surfacemix-sidebridge-$(date +%Y%m%d-%H%M%S)-XXXXXX.log")
+printf 'Display backend: %s\nStartup log: %s\n' "$GDK_BACKEND" "$log"
+exec ./orca-slicer-imagemap \
+  /home/unknown/Desktop/Documents/3dprints/carnival_dancer/carnival_dancer_surfacemix_bridge_test_20261027_sidebridge.3mf \
+  > >(tee -a "$log") 2>&1

@@ -1,0 +1,58 @@
+{
+  "archive": "/home/unknown/Desktop/Documents/3dprints/carnival_dancer/calibrated/carnival_dancer_creator5_cmyw_imagemap_calibrated.3mf",
+  "geometry_read": false,
+  "layer_height": "0.08",
+  "relationship_to_print": "not established",
+  "settings_entry_sha256": "232650f89eb111c0fcb80ffa176cbb4e88b4d02847a29014a17625e6d48155c7",
+  "zones": [
+    {
+      "component_filaments": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "loaded_profiles_do_not_prove_execution": true,
+      "options": {
+        "color_model": "cmyw",
+        "dithering_enabled": false,
+        "dithering_method": "halftone_v2",
+        "mode": "target_color",
+        "modulation_mode": "line_width",
+        "ordered_roles": true,
+        "side_surface_color_calibration_name": "creator5pro_cmyw_sidesurface_8425-8428_2026-10-19_calibration.json",
+        "top_surface_color_calibration_name": "creator5pro_cmyw_topsurface_1333_2026-10-19_calibration.json",
+        "top_surface_contoning_color_prediction_mode": "calibrated_nearest_measured_sample",
+        "top_surface_contoning_stack_layers": 100,
+        "top_surface_image_printing_enabled": false,
+        "top_surface_image_printing_method": "contoning",
+        "transmission_distance_calibration": "calibrated_nearest_measured_sample"
+      },
+      "stored_side_swatches": 560,
+      "stored_top_layer_heights_mm": [
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08,
+        0.08
+      ],
+      "stored_top_samples": 560,
+      "stored_top_stack_depth": 19,
+      "zone_id": 99
+    }
+  ]
+}

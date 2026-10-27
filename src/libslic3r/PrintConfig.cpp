@@ -2,6 +2,7 @@
 #include "PrintConfigConstants.hpp"
 #include "ClipperUtils.hpp"
 #include "Config.hpp"
+#include "ConfigVariantSelection.hpp"
 #include "MaterialType.hpp"
 #include "I18N.hpp"
 #include "format.hpp"
@@ -9379,6 +9380,19 @@ void DynamicPrintConfig::update_values_to_printer_extruders_for_multiple_filamen
             const ConfigOptionDef *optdef  = config_def->get(key);
             if (!optdef) {
                 BOOST_LOG_TRIVIAL(warning) << __FUNCTION__ << boost::format(", Line %1%: can not find opt define for %2%")%__LINE__%key;
+                continue;
+            }
+            ConfigOption* raw_option = this->option(key);
+            if (raw_option == nullptr) {
+                if (optdef->nullable)
+                    continue;
+                throw ConfigurationError("Missing required printer variant option: " + key);
+            }
+            if (raw_option->nullable()) {
+                auto* values = dynamic_cast<ConfigOptionVectorBase*>(raw_option);
+                if (values == nullptr)
+                    throw ConfigurationError("Expected a nullable printer variant vector: " + key);
+                select_nullable_config_variants(*values, variant_index);
                 continue;
             }
             switch (optdef->type) {

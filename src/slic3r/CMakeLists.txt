@@ -182,6 +182,9 @@ set(SLIC3R_GUI_SOURCES
     GUI/GLModel.hpp
     GUI/MMUPaintedTexturePreview.cpp
     GUI/MMUPaintedTexturePreview.hpp
+    GUI/SurfaceMixRecipePreviewPanel.cpp
+    GUI/SurfaceMixRecipePreviewPanel.hpp
+    GUI/SurfaceMixSideOffsetPanel.cpp
     GUI/GLSelectionRectangle.cpp
     GUI/GLSelectionRectangle.hpp
     GUI/GLShader.cpp
@@ -311,6 +314,8 @@ set(SLIC3R_GUI_SOURCES
     GUI/LinuxDisplayBackend.hpp
     GUI/MainFrame.cpp
     GUI/MainFrame.hpp
+    GUI/LiveControlBus.cpp
+    GUI/LiveControlBus.hpp
     GUI/MarkdownTip.cpp
     GUI/MarkdownTip.hpp
     GUI/MediaFilePanel.cpp

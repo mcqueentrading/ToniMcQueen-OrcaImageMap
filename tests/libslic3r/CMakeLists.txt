@@ -23,6 +23,9 @@ add_executable(${_TEST_NAME}_tests
     test_optimizers.cpp
     # test_png_io.cpp
     test_indexed_triangle_set.cpp
+    test_surface_recipe_field.cpp
+    test_surface_mix_recipe_report.cpp
+    test_surface_mix_recipe_preview.cpp
     ../libnest2d/printer_parts.cpp
     )
 

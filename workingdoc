@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Launch the rebuilt host; SurfaceMix experimental slicing remains opt-in in the UI.
+
+# Keep wxGTK's native controls and GL canvas on the same XWayland backend.
+# TONI_GDK_BACKEND=wayland is available for explicit diagnostic comparison.
+export GDK_BACKEND="${TONI_GDK_BACKEND:-x11}"
+
+cd /home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build-surface-mix
+logdir="${XDG_STATE_HOME:-$HOME/.local/state}/tonimcqueen-slicer"
+mkdir -p "$logdir"
+log=$(mktemp "$logdir/startup-$(date +%Y%m%d-%H%M%S)-XXXXXX.log")
+printf 'Display backend: %s\nStartup log: %s\n' "$GDK_BACKEND" "$log"
+exec ./src/orca-slicer-imagemap "$@" > >(tee -a "$log") 2>&1

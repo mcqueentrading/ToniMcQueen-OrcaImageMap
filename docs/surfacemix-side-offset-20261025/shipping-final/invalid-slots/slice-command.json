@@ -1,0 +1,20 @@
+[
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build-surface-mix/src/orca-slicer-imagemap",
+  "--datadir",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots/isolated-data",
+  "--debug",
+  "3",
+  "--load-settings",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots/machine.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots/process.json",
+  "--load-filaments",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots/cyan.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots/magenta.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots/yellow.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots/white.json",
+  "--arrange",
+  "0",
+  "--orient",
+  "0",
+  "--slice",
+  "0",
+  "--outputdir",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots/top-stack-fixture.3mf"
+]

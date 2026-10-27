@@ -1,0 +1,7 @@
+{
+  "catalogue_records": 1120,
+  "checks_passed": 22426,
+  "physical_colour_validated": false,
+  "printing_enabled": false,
+  "scope": "linked native transport and transaction checks, not full path coverage or physical colour"
+}

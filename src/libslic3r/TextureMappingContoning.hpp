@@ -18,6 +18,7 @@
 namespace Slic3r {
 
 class PrintConfig;
+class SurfaceMixTopStack;
 
 struct TextureMappingContoningStack {
     std::vector<unsigned int> bottom_to_top;
@@ -57,6 +58,7 @@ public:
     std::string calibrated_stack_model_key() const;
     bool nearest_measured_sample_mode() const;
     int nearest_measured_sample_stack_depth() const;
+    bool surface_mix_top_stack_mode() const { return bool(m_surface_mix_top_stack); }
     bool nearest_measured_sample_fallback_used() const;
     bool nearest_measured_sample_fallback_used(bool lower_surface) const;
     std::vector<TextureMappingContoningNearestMeasuredSampleFallbackIssue> nearest_measured_sample_fallback_issues(bool lower_surface) const;
@@ -147,6 +149,7 @@ private:
     bool m_beam_search_stack_expansion_enabled { false };
     int m_effective_color_prediction_mode { TextureMappingZone::DefaultTopSurfaceContoningColorPredictionMode };
     ColorSolverCalibratedStackModel m_calibrated_stack_model;
+    std::shared_ptr<const SurfaceMixTopStack> m_surface_mix_top_stack;
     ColorSolverCalibratedStackModel m_nearest_measured_sample_fallback_model;
     int m_nearest_measured_sample_fallback_mode { TextureMappingZone::SlicerDefaultTopSurfaceContoningColorPredictionMode };
     std::vector<ColorSolverStackComponentRole> m_component_roles;

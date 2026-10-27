@@ -1,0 +1,17 @@
+[
+  {
+    "source": "src/libslic3r/TextureMappingOffset.hpp",
+    "first_line": 28,
+    "block_sha256": "9b8ed594ea5d57da2d88fc9e923b0519c4780e0a4a6669c467f3369a921a6cfe"
+  },
+  {
+    "source": "src/libslic3r/TextureMappingOffset.cpp",
+    "first_line": 75,
+    "block_sha256": "0eb7ac5f11ed4b388c10aba91c36cbd59e3a2a2d309421dcee2666568dc16744"
+  },
+  {
+    "source": "src/libslic3r/TextureMappingOffset.cpp",
+    "first_line": 2448,
+    "block_sha256": "ddd6a39f36d8c16b252b22d7dfaeaa209339c1898682020da633a8624262451f"
+  }
+]

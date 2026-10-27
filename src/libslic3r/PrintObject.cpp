@@ -836,6 +836,19 @@ void PrintObject::prepare_infill()
     if (! this->set_started(posPrepareInfill))
         return;
     m_print->set_status(25, L("Generating infill regions"));
+    const auto trace_fill_surfaces = [this](const char *stage) {
+        if (std::getenv("ORCASLICER_TOP_SURFACE_COLORING_DEBUG") == nullptr)
+            return;
+        for (const Layer *layer : m_layers) {
+            if (layer != m_layers.back() && layer->id() != 22)
+                continue;
+            for (const LayerRegion *region : layer->regions())
+                BOOST_LOG_TRIVIAL(info) << "Top-colour preparation: stage=" << stage << " layer=" << layer->id()
+                                       << " slices=" << region->slices.surfaces.size()
+                                       << " fills=" << region->fill_surfaces.surfaces.size();
+        }
+    };
+    trace_fill_surfaces("perimeters");
     if (m_typed_slices) {
         // To improve robustness of detect_surfaces_type() when reslicing (working with typed slices), see GH issue #7442.
         // The preceding step (perimeter generator) only modifies extra_perimeters and the extra perimeters are only used by discover_vertical_shells()
@@ -852,6 +865,7 @@ void PrintObject::prepare_infill()
     // the $layerm->fill_surfaces by clipping $layerm->fill_surfaces
     // by the cummulative area of the previous $layerm->fill_surfaces.
     this->detect_surfaces_type();
+    trace_fill_surfaces("detect");
     m_print->throw_if_canceled();
 
     // Decide what surfaces are to be filled.
@@ -867,6 +881,7 @@ void PrintObject::prepare_infill()
 
     // Add solid fills to ensure the shell vertical thickness.
     this->discover_vertical_shells();
+    trace_fill_surfaces("vertical");
     m_print->throw_if_canceled();
 
     // Debugging output.
@@ -890,6 +905,7 @@ void PrintObject::prepare_infill()
     // Orca: Brought this function call before the process_external_surfaces, to allow bridges over holes to expand more than
     // one perimeter. Example of this is the bridge over the benchy lettering.
     this->discover_horizontal_shells();
+    trace_fill_surfaces("horizontal");
     m_print->throw_if_canceled();
 
 #ifdef SLIC3R_DEBUG_SLICE_PROCESSING
@@ -912,6 +928,7 @@ void PrintObject::prepare_infill()
     // 4) Merge surfaces with the same style. This will mostly get rid of the overlaps.
     //FIXME This does not likely merge surfaces, which are supported by a material with different colors, but same properties.
     this->process_external_surfaces();
+    trace_fill_surfaces("external");
     m_print->throw_if_canceled();
 
     // Debugging output.
@@ -951,6 +968,7 @@ void PrintObject::prepare_infill()
 
     // combine fill surfaces to honor the "infill every N layers" option
     this->combine_infill();
+    trace_fill_surfaces("combined");
     m_print->throw_if_canceled();
 
 #ifdef SLIC3R_DEBUG_SLICE_PROCESSING

@@ -1,0 +1,27 @@
+{
+  "normalized_wall_path_sha256": [
+    "13dc87c3b5e4b75324d23590de15e1227f517243cb3c572d6995ad019b7ed624",
+    "cf8d7f33db1e38818e6c7784458e6c79bf44c2ed8256a81ab8fff7b0cf5e81d5"
+  ],
+  "outer_wall_moves_per_cell": [
+    12208,
+    12181
+  ],
+  "passed": true,
+  "printing_enabled": false,
+  "scope": "wall-path/tool smoke only, not recipe coverage, exact optical execution or inward depth",
+  "tools_per_cell": [
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3
+    ]
+  ]
+}

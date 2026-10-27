@@ -6309,8 +6309,11 @@ static std::optional<TopSurfaceImageContoningSourceContext> top_surface_image_co
                                                        TextureMappingZone::DefaultFilamentOverhangContrastPct,
                                                        TextureMappingRawSurfaceUsage::Flat,
                                                        true);
-    if (!offset_context)
+    if (!offset_context) {
+        if (top_surface_image_debug_enabled())
+            BOOST_LOG_TRIVIAL(info) << "Top-colour source context missing: layer=" << source_layer.id() + 1 << " zone=" << plan.zone_id;
         return std::nullopt;
+    }
 
     TopSurfaceImageContoningSourceContext out;
     out.offset_context = std::move(*offset_context);
@@ -9173,6 +9176,8 @@ static void top_surface_image_append_contoning_slices(TopSurfaceImageRegionPlan 
 
     if (source_surface == TopSurfaceImageSourceSurface::Top &&
         top_surface_image_object_has_raw_top_surface_depth(object, depth)) {
+        if (solver.surface_mix_top_stack_mode())
+            throw SlicingError("SurfaceMix measured top stacks cannot be combined with an unbound raw-label atlas.");
         used_raw_top_surface_labels = true;
         std::shared_ptr<const TopSurfaceImageContoningAnchoredSurfacePlan> raw_anchored_plan =
             top_surface_image_contoning_raw_top_surface_anchored_plan(stack_plan_cache,
@@ -9453,6 +9458,19 @@ static std::vector<TopSurfaceImageRegionPlan> top_surface_image_region_plans(
             continue;
         const unsigned int zone_id = unsigned(raw_zone_id);
         const TextureMappingZone *zone = texture_mgr.zone_from_id(zone_id);
+        if (top_surface_image_debug_enabled()) {
+            std::map<int, size_t> surface_counts;
+            for (const Surface &surface : layerm->fill_surfaces.surfaces)
+                ++surface_counts[int(surface.surface_type)];
+            std::ostringstream surface_types;
+            for (const auto &entry : surface_counts)
+                surface_types << entry.first << ':' << entry.second << ',';
+            BOOST_LOG_TRIVIAL(info) << "Top-colour region: layer=" << layer.id() + 1 << " region=" << region_id
+                                   << " solid_filament=" << raw_zone_id << " zone_found=" << (zone != nullptr)
+                                   << " top_active=" << (zone != nullptr && zone->top_surface_image_printing_active())
+                                   << " top_layers=" << layerm->region().config().top_shell_layers.value
+                                   << " surfaces=" << surface_types.str();
+        }
         if (zone == nullptr || !zone->enabled || zone->deleted || !zone->top_surface_image_printing_active())
             continue;
 
@@ -9758,6 +9776,9 @@ static std::vector<TopSurfaceImageRegionPlan> top_surface_image_region_plans(
             }
         }
 
+        if (top_surface_image_debug_enabled())
+            BOOST_LOG_TRIVIAL(info) << "Top-colour plan: layer=" << layer.id() + 1 << " region=" << region_id
+                                   << " zone=" << zone_id << " slices=" << plan.slices.size();
         if (!plan.slices.empty())
             plans[region_id] = std::move(plan);
     }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg height="130.000015" width="630.000000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <marker id="endArrow" markerHeight="8" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="1" refY="5" viewBox="0 0 10 10">
+      <polyline fill="darkblue" points="0,0 10,5 0,10 1,5" />
+   </marker>
+<rect fill='white' stroke='none' x='0' y='0' width='630.000000' height='130.000015'/>
+   <path d="M 120.586 49.4142 19.4142 49.4142 19.4142 110.586 120.586 110.586 z " style="fill: #9ecae1; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.200000" />
+   <path d="M 260.586 49.4142 159.414 49.4142 159.414 110.586 260.586 110.586 z " style="fill: #9ecae1; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.200000" />
+   <path d="M 130 117.218 130 44.75 125.25 44.75 125.25 40 12.7825 40 10 42.7825 10 117.218 12.7825 120 127.218 120 z M 19.5 49.5 120.5 49.5 120.5 110.5 19.5 110.5 z " style="fill: #ff0000; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.130000" />
+   <path d="M 270 117.218 270 44.75 265.25 44.75 265.25 40 152.782 40 150 42.7825 150 117.218 152.782 120 267.218 120 z M 159.5 49.5 260.5 49.5 260.5 110.5 159.5 110.5 z " style="fill: #ff0000; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.130000" />
+   <path d="M 120.586 49.4142 20 49.4142 20 110 120.586 110 z " style="fill: #ffd92f; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.240000" />
+   <path d="M 260.586 49.4142 159.414 49.4142 159.414 110 260.586 110 z " style="fill: #ffd92f; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.240000" />
+   <path d="M 120.586 49.4142 20 49.4142 20 110 120.586 110 z " style="fill: #1f78b4; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.340000" />
+   <path d="M 260.586 49.4142 159.414 49.4142 159.414 110 260.586 110 z " style="fill: #1f78b4; stroke: black; stroke-width: 0.000000; fill-type: evenodd"  fill-opacity="0.340000" />
+   <path d="M 120.586 49.4142 19.4142 49.4142 19.4142 110.586 120.586 110.586 z" style="fill: none; stroke: #3182bd; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 260.586 49.4142 159.414 49.4142 159.414 110.586 260.586 110.586 z" style="fill: none; stroke: #3182bd; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 130 117.218 130 44.75 125.25 44.75 125.25 40 12.7825 40 10 42.7825 10 117.218 12.7825 120 127.218 120 z" style="fill: none; stroke: #cc0000; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 19.5 49.5 120.5 49.5 120.5 110.5 19.5 110.5 z" style="fill: none; stroke: #cc0000; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 270 117.218 270 44.75 265.25 44.75 265.25 40 152.782 40 150 42.7825 150 117.218 152.782 120 267.218 120 z" style="fill: none; stroke: #cc0000; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 159.5 49.5 260.5 49.5 260.5 110.5 159.5 110.5 z" style="fill: none; stroke: #cc0000; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 120.586 49.4142 20 49.4142 20 110 120.586 110 z" style="fill: none; stroke: #b38f00; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 260.586 49.4142 159.414 49.4142 159.414 110 260.586 110 z" style="fill: none; stroke: #b38f00; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 120.586 49.4142 20 49.4142 20 110 120.586 110 z" style="fill: none; stroke: #08519c; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+   <path d="M 260.586 49.4142 159.414 49.4142 159.414 110 260.586 110 z" style="fill: none; stroke: #08519c; stroke-width: 0.350000; fill-type: evenodd"  fill-opacity="1.000000" />
+<circle cx="20.000000" cy="25.000008" r="10" fill="#9ecae1"/><text x="40.000000" y="25.000008" font-family="sans-serif" font-size="10px" fill="black">target top</text><circle cx="220.000000" cy="25.000008" r="10" fill="#ff0000"/><text x="240.000000" y="25.000008" font-family="sans-serif" font-size="10px" fill="black">current wall footprint</text><circle cx="420.000000" cy="25.000008" r="10" fill="#ffd92f"/><text x="440.000000" y="25.000008" font-family="sans-serif" font-size="10px" fill="black">final image fill buckets</text><circle cx="20.000000" cy="12.000000" r="10" fill="#1f78b4"/><text x="40.000000" y="12.000000" font-family="sans-serif" font-size="10px" fill="black">planned top shell fill</text></svg>

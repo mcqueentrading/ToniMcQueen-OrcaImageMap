@@ -1,0 +1,20 @@
+[
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build-surface-recipe-importer/side-offset-integration/bin/isolated-top-stack-cli",
+  "--datadir",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/combined-smoke-01/isolated-data",
+  "--debug",
+  "3",
+  "--load-settings",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/combined-smoke-01/machine.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/combined-smoke-01/process.json",
+  "--load-filaments",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/combined-smoke-01/cyan.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/combined-smoke-01/magenta.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/combined-smoke-01/yellow.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/combined-smoke-01/white.json",
+  "--arrange",
+  "0",
+  "--orient",
+  "0",
+  "--slice",
+  "0",
+  "--outputdir",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/combined-smoke-01",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/combined-smoke-01/top-stack-fixture.3mf"
+]

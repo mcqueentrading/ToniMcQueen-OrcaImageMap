@@ -13,6 +13,7 @@
 #include "libslic3r/Model.hpp"
 #include "libslic3r/PresetBundle.hpp"
 #include "libslic3r/TextureMapping.hpp"
+#include "libslic3r/SurfaceMixSideBridge.hpp"
 #include "libslic3r/TextureMappingContoning.hpp"
 #include "ColorSolver.hpp"
 
@@ -67,6 +68,24 @@ constexpr const char *TEXTURE_MAPPING_BACKGROUND_COLOR_CONFIG_KEY = "texture_map
 constexpr float k_contoning_preview_inferred_black_td_mm = 0.1f;
 constexpr float k_contoning_preview_surface_scatter = 0.12f;
 
+SurfaceMixRecipePreviewSettings &surface_mix_preview_session()
+{
+    static SurfaceMixRecipePreviewSettings state;
+    return state;
+}
+
+bool model_volume_has_raw_texture_payload_preview_data_impl(const ModelVolume &model_volume);
+
+SurfaceMixRecipePreviewSettings active_surface_mix_preview(const ModelVolume &volume, const TextureMappingZone *zone)
+{
+    if (zone == nullptr || !zone->enabled || zone->deleted || !zone->is_image_texture() ||
+        volume.get_object() == nullptr || volume.get_object()->get_model() == nullptr ||
+        model_volume_has_raw_texture_payload_preview_data_impl(volume))
+        return {};
+    auto state = surface_mix_recipe_preview_settings(*volume.get_object()->get_model(), *zone);
+    return state.mode != SurfaceMixPreviewMode::Off ? state : SurfaceMixRecipePreviewSettings{};
+}
+
 struct TexturePreviewMixCandidate
 {
     std::array<float, 3> rgb;
@@ -90,6 +109,7 @@ struct TexturePreviewGenericMixCandidateCache
 
 struct TexturePreviewSimulationSettings
 {
+    SurfaceMixRecipePreviewSettings surface_mix;
     int mapping_mode = int(TextureMappingZone::TextureMappingFilamentBlending);
     int filament_color_mode = TextureMappingZone::DefaultFilamentColorMode;
     bool force_sequential_filaments = false;
@@ -177,6 +197,7 @@ struct TexturePreviewSimulationResult
     unsigned int width { 0 };
     unsigned int height { 0 };
     std::vector<unsigned char> rgba;
+    bool categorical { false };
 };
 
 struct TexturePreviewSimulationJobState
@@ -1150,7 +1171,7 @@ void composite_texture_preview_rgba_over_background(std::vector<unsigned char> &
     }
 }
 
-void configure_texture_preview_sampler(const GUI::GLTexture &texture)
+void configure_texture_preview_sampler(const GUI::GLTexture &texture, bool categorical = false)
 {
     if (texture.get_id() == 0)
         return;
@@ -1158,8 +1179,8 @@ void configure_texture_preview_sampler(const GUI::GLTexture &texture)
     glsafe(::glBindTexture(GL_TEXTURE_2D, texture.get_id()));
     glsafe(::glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE));
     glsafe(::glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE));
-    glsafe(::glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
-    glsafe(::glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
+    glsafe(::glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, categorical ? GL_NEAREST : GL_LINEAR));
+    glsafe(::glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, categorical ? GL_NEAREST : GL_LINEAR));
     glsafe(::glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0));
     glsafe(::glBindTexture(GL_TEXTURE_2D, 0));
 }
@@ -3321,6 +3342,8 @@ std::vector<float> raw_offset_print_width_weights_for_texture_preview(const Text
 
 void prepare_texture_preview_simulation_settings(TexturePreviewSimulationSettings &settings)
 {
+    if (settings.surface_mix.catalog != nullptr)
+        return;
     settings.use_fixed_color_generic_solver = texture_preview_uses_fixed_color_generic_solver(settings);
     settings.semantic_component_indices =
         semantic_component_indices_for_texture_preview(settings.component_colors,
@@ -3347,6 +3370,13 @@ ColorRGBA simulated_texture_preview_color_for_vertex_color(const ColorRGBA *sour
         return { 0.f, 0.f, 0.f, 1.f };
     if (settings == nullptr)
         return *source_color;
+
+    if (settings->surface_mix.catalog != nullptr) {
+        const auto &state = settings->surface_mix;
+        const auto rgb = state.catalog->display_colour(
+            state.catalog->nearest_recipe({source_color->r(), source_color->g(), source_color->b()}), state.mode, state.depth_mm);
+        return {float(rgb[0]), float(rgb[1]), float(rgb[2]), source_color->a()};
+    }
 
     const std::array<float, 4> sample_rgba = {
         source_color->r(),
@@ -3377,9 +3407,19 @@ std::optional<TexturePreviewSimulationSettings> texture_preview_simulation_setti
                                                                                                  size_t num_physical,
                                                                                                  const TextureMappingManager *texture_mgr,
                                                                                                  const std::vector<std::string> &physical_colors,
-                                                                                                 bool allow_raw_top_surface_source_preview = false)
+                                                                                                 bool allow_raw_top_surface_source_preview = false,
+                                                                                                 const ModelVolume *model_volume = nullptr)
 {
     const TextureMappingZone *zone = zone_for_filament(filament_id, num_physical, texture_mgr);
+    if (model_volume != nullptr && zone != nullptr && is_image_zone(*zone)) {
+        const auto state = active_surface_mix_preview(*model_volume, zone);
+        if (state.catalog != nullptr) {
+            TexturePreviewSimulationSettings settings;
+            settings.surface_mix = state;
+            settings.component_colors = {{0.f, 1.f, 1.f}, {1.f, 0.f, 1.f}, {1.f, 1.f, 0.f}, {1.f, 1.f, 1.f}};
+            return settings;
+        }
+    }
     if (zone == nullptr || !is_image_zone(*zone) ||
         (!texture_preview_simulate_colors() && !allow_raw_top_surface_source_preview))
         return std::nullopt;
@@ -3517,8 +3557,12 @@ std::optional<TexturePreviewSimulationSettings> texture_preview_simulation_setti
                 0.f;
             component_transmission_distances_mm.emplace_back(std::isfinite(value) && value > 0.f ? std::clamp(value, 0.01f, 50.f) : 0.f);
         }
-        std::optional<ColorSolverCandidateSet> calibrated_candidates =
-            texture_mapping_side_surface_color_calibrated_candidates(*zone,
+        std::string side_error;
+        auto calibrated_candidates = surface_mix_side_candidates(*zone, settings.component_ids, &side_error);
+        if (!side_error.empty())
+            return std::nullopt; // Invalid experimental data is not rendered as a generic calibrated result.
+        if (!calibrated_candidates)
+            calibrated_candidates = texture_mapping_side_surface_color_calibrated_candidates(*zone,
                                                                      settings.component_colors,
                                                                      component_transmission_distances_mm);
         if (calibrated_candidates && !calibrated_candidates->empty()) {
@@ -3576,6 +3620,9 @@ size_t texture_preview_simulation_signature(const ModelVolume &model_volume,
     };
 
     mix(reinterpret_cast<size_t>(&model_volume));
+    mix(settings.surface_mix.revision);
+    mix(size_t(settings.surface_mix.mode));
+    mix(std::hash<double>{}(settings.surface_mix.depth_mm));
     mix(std::hash<int>{}(settings.mapping_mode));
     mix(std::hash<int>{}(settings.filament_color_mode));
     mix(std::hash<int>{}(settings.force_sequential_filaments ? 1 : 0));
@@ -3676,6 +3723,15 @@ TexturePreviewSimulationResult build_simulated_texture_preview_result(size_t sig
     result.rgba.resize(size_t(result.width) * size_t(result.height) * 4, 0);
     if (result.width == 0 || result.height == 0)
         return result;
+
+    if (settings.surface_mix.catalog != nullptr) {
+        result.categorical = true;
+        result.rgba = settings.surface_mix.catalog->render_rgba(source_rgba, width, height, result.width, result.height,
+            settings.surface_mix.mode, settings.surface_mix.depth_mm,
+            [&job_state]() { return texture_preview_simulation_cancelled(job_state); });
+        if (result.rgba.empty()) return {};
+        return result;
+    }
 
     const bool use_raw_top_surface_source_preview =
         settings.raw_top_surface_source_preview;
@@ -4503,7 +4559,7 @@ bool upload_simulated_texture_preview_result(TexturePreviewSimulationCacheEntry 
         return false;
     }
 
-    configure_texture_preview_sampler(*entry.texture);
+    configure_texture_preview_sampler(*entry.texture, result.categorical);
     entry.uploaded_signature = result.signature;
     return true;
 }
@@ -4565,7 +4621,8 @@ const GUI::GLTexture *simulated_texture_preview_texture_for_filament(const Model
                                                          num_physical,
                                                          texture_mgr,
                                                          physical_colors,
-                                                         raw_top_surface_source_preview);
+                                                         raw_top_surface_source_preview,
+                                                         &model_volume);
     if (!settings.has_value())
         return flat_surface_preview ? nullptr : &fallback_texture;
     settings->contoning_flat_surface_quantization = contoning_flat_surface_quantization;
@@ -4653,11 +4710,15 @@ const GUI::GLTexture *simulated_texture_preview_texture_for_filament(const Model
         entry.temporary_pending_signature = temporary_signature;
         entry.ready_frame_requested = false;
         entry.pending_job_state = std::make_shared<TexturePreviewSimulationJobState>();
+        const bool surface_mix_preview = settings->surface_mix.catalog != nullptr;
         auto source_rgba = std::make_shared<std::vector<unsigned char>>(model_volume.imported_texture_rgba.begin(),
                                                                         model_volume.imported_texture_rgba.end());
-        auto source_raw_offsets = std::make_shared<std::vector<unsigned char>>(model_volume.imported_texture_raw_filament_offsets.begin(),
-                                                                              model_volume.imported_texture_raw_filament_offsets.end());
-        auto source_raw_metadata_json =
+        auto source_raw_offsets = surface_mix_preview ?
+            std::make_shared<std::vector<unsigned char>>() :
+            std::make_shared<std::vector<unsigned char>>(model_volume.imported_texture_raw_filament_offsets.begin(),
+                                                         model_volume.imported_texture_raw_filament_offsets.end());
+        auto source_raw_metadata_json = surface_mix_preview ?
+            std::make_shared<std::string>() :
             std::make_shared<std::string>(model_volume.imported_texture_raw_metadata_json);
         auto source_raw_top_surface_slots =
             settings->contoning_flat_surface_raw_top_stack_preview ||
@@ -6362,6 +6423,49 @@ void set_surface_gradient_preview_uniforms(GLShaderProgram &shader, const Surfac
 
 } // namespace
 
+SurfaceMixRecipePreviewSettings surface_mix_recipe_preview_snapshot()
+{
+    return surface_mix_preview_session();
+}
+
+void restore_surface_mix_recipe_preview_snapshot(const SurfaceMixRecipePreviewSettings &snapshot)
+{
+    auto &state = surface_mix_preview_session();
+    const size_t revision = state.revision + 1;
+    state = snapshot;
+    state.revision = revision;
+}
+
+SurfaceMixRecipePreviewSettings surface_mix_recipe_preview_settings(const Model &model, const TextureMappingZone &zone)
+{
+    const auto &state = surface_mix_preview_session();
+    if (state.model_id != model.id().id || state.zone_stable_id != zone.stable_id || state.zone_id != zone.zone_id)
+        return {};
+    return state;
+}
+
+void set_surface_mix_recipe_preview(const Model &model, const TextureMappingZone &zone,
+                                   std::shared_ptr<const SurfaceMixRecipePreview> catalog,
+                                   SurfaceMixPreviewMode mode, double depth_mm)
+{
+    if (!std::isfinite(depth_mm) || depth_mm < 0.0 ||
+        (mode != SurfaceMixPreviewMode::Off && mode != SurfaceMixPreviewMode::MeasuredColour && mode != SurfaceMixPreviewMode::DepthComponent) ||
+        (mode != SurfaceMixPreviewMode::Off && (catalog == nullptr || catalog->recipes().empty())))
+        return;
+    auto &state = surface_mix_preview_session();
+    if (state.model_id == model.id().id && state.zone_stable_id == zone.stable_id && state.zone_id == zone.zone_id &&
+        state.catalog == catalog && state.mode == mode && state.depth_mm == depth_mm)
+        return;
+    const size_t revision = state.revision + 1;
+    state = {std::move(catalog), mode, depth_mm, model.id().id, zone.stable_id, zone.zone_id, revision};
+}
+
+bool surface_mix_recipe_preview_active(const ModelVolume &volume, unsigned filament_id,
+                                      size_t num_physical, const TextureMappingManager *texture_mgr)
+{
+    return active_surface_mix_preview(volume, zone_for_filament(filament_id, num_physical, texture_mgr)).catalog != nullptr;
+}
+
 bool model_volume_has_texture_preview_data(const ModelVolume &model_volume)
 {
     return model_volume_has_texture_preview_data_impl(model_volume);
@@ -6426,7 +6530,7 @@ bool texture_preview_simulation_enabled_for_all_filaments(const std::vector<unsi
 
 size_t texture_preview_simulation_generation_signature()
 {
-    return texture_preview_vertex_color_simulation_generation();
+    return texture_preview_vertex_color_simulation_generation() + surface_mix_preview_session().revision;
 }
 
 bool build_mmu_texture_preview_models(
@@ -6460,7 +6564,7 @@ bool build_mmu_texture_preview_models(
         if (zone == nullptr || !is_image_zone(*zone))
             continue;
         std::optional<TexturePreviewSimulationSettings> simulation_settings =
-            texture_preview_simulation_settings_for_filament(filament_id, num_physical, texture_mgr, physical_colors);
+            texture_preview_simulation_settings_for_filament(filament_id, num_physical, texture_mgr, physical_colors, false, &model_volume);
         if (simulation_settings &&
             texture_preview_uses_halftone_dithering(*simulation_settings) &&
             (ready_simulated_filament_ids == nullptr || has_ready_simulated_preview(filament_id)))
@@ -6543,7 +6647,7 @@ bool build_mmu_vertex_color_preview_models(
                 has_texture_mapping_color_override || model_volume_has_texture_mapping_color_preview_data(model_volume);
             const bool has_texture_preview = model_volume_has_texture_preview_data(model_volume);
             std::optional<TexturePreviewSimulationSettings> simulation_settings =
-                texture_preview_simulation_settings_for_filament(filament_id, num_physical, texture_mgr, physical_colors);
+                texture_preview_simulation_settings_for_filament(filament_id, num_physical, texture_mgr, physical_colors, false, &model_volume);
             const bool has_image_halftone_preview =
                 has_texture_preview &&
                 !has_texture_mapping_color_preview &&
@@ -7160,12 +7264,14 @@ void render_model_texture_preview_models(
     GLuint bound_texture_id = 0;
     GLuint bound_contoning_flat_texture_id = 0;
     GLuint bound_contoning_flat_bottom_texture_id = 0;
+    bool surface_mix_drawn = false;
     const bool color_match_active = color_match != nullptr && color_match->active;
     for (size_t idx = 0; idx < models.size(); ++idx) {
         if (color_match_active && !color_match_preview_allows_filament(color_match, filament_ids[idx]))
             continue;
         const bool raw_vertex_color_preview = filament_ids[idx] == 0;
-        const float mix = raw_vertex_color_preview ?
+        const bool surface_mix_active = surface_mix_recipe_preview_active(model_volume, filament_ids[idx], num_physical, texture_mgr);
+        const float mix = raw_vertex_color_preview || surface_mix_active ?
             1.f :
             texture_preview_mix_for_filament(filament_ids[idx], num_physical, texture_mgr);
         const bool invalid = raw_vertex_color_preview ?
@@ -7175,7 +7281,7 @@ void render_model_texture_preview_models(
             continue;
 
         const bool force_original_texture =
-            color_match_active || texture_preview_halftone_simulation_enabled_for_filament(filament_ids[idx], num_physical, texture_mgr);
+            color_match_active || (!surface_mix_active && texture_preview_halftone_simulation_enabled_for_filament(filament_ids[idx], num_physical, texture_mgr));
         const GUI::GLTexture *base_preview_texture = force_original_texture ?
             &texture :
             simulated_texture_preview_texture_for_filament(model_volume,
@@ -7202,6 +7308,7 @@ void render_model_texture_preview_models(
         const bool has_raw_texture_payload =
             model_volume_has_raw_texture_payload_preview_data_impl(model_volume);
         const bool use_contoning_flat_texture =
+            !surface_mix_active &&
             !color_match_active &&
             !force_original_texture &&
             texture_preview_flat_surface_texture_for_filament(filament_ids[idx],
@@ -7271,6 +7378,10 @@ void render_model_texture_preview_models(
         const GUI::GLTexture *preview_texture = contoning_flat_pending ? &texture : base_preview_texture;
         if (preview_texture == nullptr || preview_texture->get_id() == 0)
             continue;
+        // SurfaceMix is already a composite preview. Do not render the same
+        // full model once per CMYW filament, which causes translucent overlap.
+        if (surface_mix_active && surface_mix_drawn)
+            continue;
 
         if (preview_texture->get_id() != bound_texture_id) {
             glsafe(::glActiveTexture(GL_TEXTURE0));
@@ -7292,10 +7403,12 @@ void render_model_texture_preview_models(
         }
         shader->set_uniform("contoning_flat_surface_texture_enabled", contoning_flat_enabled);
         shader->set_uniform("contoning_flat_surface_bottom_texture_enabled", contoning_flat_bottom_enabled);
-        shader->set_uniform("texture_preview_mix", color_match_active ? 1.f : mix);
-        shader->set_uniform("invalid_texture_mapping", invalid);
+        shader->set_uniform("texture_preview_mix", color_match_active || surface_mix_active ? 1.f : mix);
+        shader->set_uniform("invalid_texture_mapping", !surface_mix_active && invalid);
         models[idx].set_color(colors[idx]);
         models[idx].render();
+        if (surface_mix_active)
+            surface_mix_drawn = true;
     }
 
     glsafe(::glActiveTexture(GL_TEXTURE2));
@@ -7335,7 +7448,8 @@ void render_model_texture_preview_model(
     if (shader == nullptr)
         return;
 
-    const float mix = texture_preview_mix_for_filament(filament_id, num_physical, texture_mgr);
+    const bool surface_mix_active = surface_mix_recipe_preview_active(model_volume, filament_id, num_physical, texture_mgr);
+    const float mix = surface_mix_active ? 1.f : texture_preview_mix_for_filament(filament_id, num_physical, texture_mgr);
     const bool invalid = texture_preview_settings_invalid_for_filament(filament_id, num_physical, texture_mgr);
     const bool color_match_active = color_match != nullptr && color_match->active;
     if (color_match_active && !color_match_preview_allows_filament(color_match, filament_id))
@@ -7345,7 +7459,7 @@ void render_model_texture_preview_model(
 
     const size_t texture_signature = model_volume_texture_preview_signature(model_volume);
     const bool force_original_texture =
-        color_match_active || texture_preview_halftone_simulation_enabled_for_filament(filament_id, num_physical, texture_mgr);
+        color_match_active || (!surface_mix_active && texture_preview_halftone_simulation_enabled_for_filament(filament_id, num_physical, texture_mgr));
     const GUI::GLTexture *base_preview_texture = force_original_texture ?
         &texture :
         simulated_texture_preview_texture_for_filament(model_volume,
@@ -7399,6 +7513,7 @@ void render_model_texture_preview_model(
     const bool has_raw_texture_payload =
         model_volume_has_raw_texture_payload_preview_data_impl(model_volume);
     const bool use_contoning_flat_texture =
+        !surface_mix_active &&
         !color_match_active &&
         !force_original_texture &&
         texture_preview_flat_surface_texture_for_filament(filament_id,
@@ -7486,8 +7601,8 @@ void render_model_texture_preview_model(
     }
     shader->set_uniform("contoning_flat_surface_texture_enabled", contoning_flat_enabled);
     shader->set_uniform("contoning_flat_surface_bottom_texture_enabled", contoning_flat_bottom_enabled);
-    shader->set_uniform("texture_preview_mix", color_match_active ? 1.f : mix);
-    shader->set_uniform("invalid_texture_mapping", invalid);
+    shader->set_uniform("texture_preview_mix", color_match_active || surface_mix_active ? 1.f : mix);
+    shader->set_uniform("invalid_texture_mapping", !surface_mix_active && invalid);
     model.set_color(color);
     if (render_range == std::make_pair<size_t, size_t>(0, -1))
         model.render();
@@ -7568,7 +7683,9 @@ void render_model_vertex_color_preview_models(
         const bool gradient_preview = zone != nullptr && is_gradient_zone(*zone);
         if (color_match_active && gradient_preview)
             continue;
-        const float mix = raw_vertex_color_preview ?
+        const bool surface_mix_active = model_volume != nullptr &&
+            surface_mix_recipe_preview_active(*model_volume, filament_ids[idx], num_physical, texture_mgr);
+        const float mix = raw_vertex_color_preview || surface_mix_active ?
             1.f :
             texture_preview_mix_for_filament(filament_ids[idx], num_physical, texture_mgr);
         const bool invalid = raw_vertex_color_preview ?
@@ -7592,8 +7709,8 @@ void render_model_vertex_color_preview_models(
         } else {
             if (vertex_shader == nullptr || !use_shader(vertex_shader))
                 continue;
-            vertex_shader->set_uniform("texture_preview_mix", color_match_active ? 1.f : mix);
-            vertex_shader->set_uniform("invalid_texture_mapping", invalid);
+            vertex_shader->set_uniform("texture_preview_mix", color_match_active || surface_mix_active ? 1.f : mix);
+            vertex_shader->set_uniform("invalid_texture_mapping", !surface_mix_active && invalid);
         }
         models[idx].set_color(colors[idx]);
         models[idx].render(active_shader);

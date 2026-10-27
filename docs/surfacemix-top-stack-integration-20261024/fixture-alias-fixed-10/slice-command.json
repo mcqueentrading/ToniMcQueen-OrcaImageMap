@@ -1,0 +1,20 @@
+[
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build-surface-recipe-importer/top-stack-alias-fix/bin/isolated-top-stack-cli",
+  "--datadir",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-10/isolated-data",
+  "--debug",
+  "3",
+  "--load-settings",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-10/machine.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-10/process.json",
+  "--load-filaments",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-10/cyan.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-10/magenta.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-10/yellow.json;/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-10/white.json",
+  "--arrange",
+  "0",
+  "--orient",
+  "0",
+  "--slice",
+  "0",
+  "--outputdir",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-10",
+  "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-top-stack-integration-20261024/fixture-alias-fixed-10/top-stack-fixture.3mf"
+]

@@ -1,0 +1,2 @@
+# Generated native executables/objects are reproducible build products, not source evidence.
+native-*/

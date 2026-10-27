@@ -1,0 +1,120 @@
+{
+  "binary_sha256": "07c48dd13b1d3cb25ac8dc7c3b8ec6a4aadeb2c1dfcdd608b74ccfdd0cb924b4",
+  "finished_utc": "2026-10-25T02:31:06.509234+00:00",
+  "gui_verified": false,
+  "invalid_slots": {
+    "exit_code": 156,
+    "passed": true,
+    "printing_enabled": false
+  },
+  "native": {
+    "catalogue_records": 1120,
+    "checks_passed": 29157,
+    "physical_colour_validated": false,
+    "printing_enabled": false,
+    "scope": "linked native transport and transaction checks, not full path coverage or physical colour",
+    "side_catalogue_records": 1680
+  },
+  "passed": true,
+  "print_validated": false,
+  "printing_enabled": false,
+  "protected_hashes": {
+    "/home/unknown/Desktop/Documents/3dprints/carnival_dancer/obj_texture_maps/carnival+dancer+3d+model.obj": "f9931017dfbdc8c4adae28772e7c2865f9767212aa5406dcd91c5fbeeff931d4",
+    "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/resources/surfacemix/creator5-cmyw-top-preview.v1.json": "b6725b0bd5e995ad4415b347c9b5944271e16a44cbc6964925878ccbffed6efa"
+  },
+  "protected_unchanged": true,
+  "scope": "shipping native and controlled fixture execution, not physical colour/full coverage",
+  "started_utc": "2026-10-25T02:29:43.302056+00:00",
+  "steps": [
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "build-surface-recipe-importer",
+        "-j2"
+      ],
+      "exit_code": 0,
+      "name": "focused-build"
+    },
+    {
+      "command": [
+        "ctest",
+        "--test-dir",
+        "build-surface-recipe-importer",
+        "--output-on-failure"
+      ],
+      "exit_code": 0,
+      "name": "focused-tests"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "scripts/check-surface-mix-native.py",
+        "--out",
+        "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build-surface-recipe-importer/shipping-final"
+      ],
+      "exit_code": 0,
+      "name": "native"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "scripts/surface-mix-side-offset-fixture.py",
+        "--out",
+        "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/combined",
+        "--slice-with",
+        "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build-surface-mix/src/orca-slicer-imagemap",
+        "--with-top-stacks"
+      ],
+      "exit_code": 0,
+      "name": "combined"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "scripts/surface-mix-side-offset-fixture.py",
+        "--out",
+        "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/docs/surfacemix-side-offset-20261025/shipping-final/invalid-slots",
+        "--slice-with",
+        "/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/build-surface-mix/src/orca-slicer-imagemap",
+        "--invalid-slot"
+      ],
+      "exit_code": 0,
+      "name": "invalid-slots"
+    }
+  ],
+  "top_paths": {
+    "conflicts": 0,
+    "interval_conflicts": 0,
+    "missing": 0,
+    "passed": true
+  },
+  "upload_performed": false,
+  "wall_paths": {
+    "normalized_wall_path_sha256": [
+      "13dc87c3b5e4b75324d23590de15e1227f517243cb3c572d6995ad019b7ed624",
+      "cf8d7f33db1e38818e6c7784458e6c79bf44c2ed8256a81ab8fff7b0cf5e81d5"
+    ],
+    "outer_wall_moves_per_cell": [
+      12208,
+      12181
+    ],
+    "passed": true,
+    "printing_enabled": false,
+    "scope": "wall-path/tool smoke only, not recipe coverage, exact optical execution or inward depth",
+    "tools_per_cell": [
+      [
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        1,
+        2,
+        3
+      ]
+    ]
+  }
+}

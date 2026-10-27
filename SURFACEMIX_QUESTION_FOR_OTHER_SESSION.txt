@@ -1,0 +1,65 @@
+Please inspect the current ToniMcQueen-Slicer/ImageMap implementation and answer this question without changing files or enabling printing.
+
+Our standalone SurfaceMix quantizer is:
+/home/unknown/Documents/scripts/projectcampaign/tonimcqueen-surfacemix-quantizer
+
+It currently:
+- loads OBJ geometry, UVs and basecolor texture;
+- selects measured SurfaceMix top recipes;
+- preserves the selected ordered surface-to-deep depth plans;
+- carries measured RGB values for the selected calibration records;
+- creates a UV-local calibration preview overlay;
+- preserves the original source texture separately inside the 3MF;
+- does not write triangle paint_color overrides or executable G-code.
+
+The calibration profiles contain:
+- 560 measured top-surface records, normally each containing a 19-layer stack at 0.08 mm;
+- 560 measured side-surface swatches with raw offsets and measured colours.
+
+Profiles:
+/home/unknown/Desktop/Documents/3dprints/calibration/2026-10-19-colour-calibration/profiles/creator5pro_cmyw_topsurface_1333_2026-10-19_calibration.json
+/home/unknown/Desktop/Documents/3dprints/calibration/2026-10-19-colour-calibration/profiles/creator5pro_cmyw_sidesurface_8425-8428_2026-10-19_calibration.json
+
+The packaged Carnival model opens and slices successfully in Reforge/ImageMap:
+/home/unknown/Documents/scripts/projectcampaign/tonimcqueen-surfacemix-quantizer/derived-artifacts/carnival-calibrated-overlay-preview.3mf
+
+Exported G-code:
+/home/unknown/Desktop/Documents/3dprints/carnival_dancer/carnival+dancer+3d+model_PLA_5h0m.gcode
+
+G-code audit result:
+- 432 global layer changes;
+- 431 tool changes;
+- T0=109, T1=108, T2=108, T3=108;
+- repeating global sequence T0 -> T1 -> T2 -> T3;
+- no SurfaceMix calibration or depth-plan references;
+- no proof of a surface-relative inward CMYW stack;
+- no dedicated calibrated white backing/core.
+
+The preview looks coherent, but the colour mix is not calibrated. ImageMap is currently producing ordinary four-filament surface-solver output.
+
+Please inspect these exact source areas:
+/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/src/libslic3r/TextureMappingOffset.cpp
+/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/src/libslic3r/TextureMappingContoning.cpp
+/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/src/libslic3r/ImageMapRawFilamentOffsetAtlas.cpp
+/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/src/libslic3r/SurfaceRecipeField.cpp
+/home/unknown/Documents/scripts/projectcampaign/ToniMcQueen-Slicer/src/slic3r/GUI/SurfaceMixRecipePreviewPanel.cpp
+
+Answer these points:
+
+1. Does the current slicer already contain a usable bridge from measured top/side calibration recipes into ImageMap virtual mixed-filament definitions, local-Z passes, region masks, or actual path/tool assignment?
+2. Identify exact functions, classes, configuration keys and files that are relevant.
+3. What is the smallest safe integration seam for importing the Rust SurfaceMix recipe report into the slicer?
+4. Can ImageMap support our surface-relative inward depth stack, or does it currently only support global-Z/local-Z subdivision?
+5. How should lateral side striation be represented separately from inward depth stacks?
+6. What exact G-code evidence would prove that a selected measured recipe was executed rather than a generic T0/T1/T2/T3 cycle?
+7. Should we extend the existing ImageMap measured/local-Z machinery, or add a separate SurfaceMix recipe consumer?
+
+Keep these distinctions explicit:
+- visual texture preview;
+- local measured recipe selection;
+- surface-relative inward depth execution;
+- lateral side striation;
+- actual G-code/tool-change proof;
+- physical print validation.
+
+Return a technical assessment with an exact file/function map and one recommended next implementation seam. Do not claim that metadata or preview colours prove executable printing.
